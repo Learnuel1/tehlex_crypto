@@ -1,12 +1,16 @@
 import { Box, Grid, GridItem, VStack, Image, Stack, Text, Heading, HStack, Button } from '@chakra-ui/react'
 import React from 'react';
 import brand_img from '../assets/images/home_img.png'
+import EarnPoint from '../components/HomeComonents/EarnPoint';
+import MadeEasy from '../components/HomeComonents/MadeEasy';
+import OurCoreServices from '../components/HomeComonents/OurCoreServices';
 import OurStats from '../components/HomeComonents/OurStats';
+import Testimonial from '../components/HomeComonents/Testimonial';
 
 const Home = () => {
   return (
     <section>
-        <Box w='100vw' minH={'100vh'} bg='blue' p='2rem'>
+        <Box maxW='100vw' minH={'100vh'} bg='blue' p='2rem'>
           <Grid templateColumns='repeat(2, 1fr)' gap={'1rem'}>
             <GridItem colSpan={[2,2,1,1]}>
               <VStack color={'white'} spacing='2.5rem' mt={'2rem'}>
@@ -39,12 +43,16 @@ const Home = () => {
 
             <GridItem colSpan={[2,2,1,1]}>
               <VStack mt={'2rem'}>
-                <Image alt='brand_img' src={brand_img} w='500px' />
+                <Image alt='brand_img' src={brand_img} w='500px'  />
               </VStack>
             </GridItem>
           </Grid>         
         </Box>
         <OurStats />
+        <OurCoreServices />
+        <MadeEasy />
+        <Testimonial />
+        <EarnPoint />
     </section>
   )
 }

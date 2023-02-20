@@ -1,0 +1,40 @@
+import { Box, Button, Grid, GridItem, Heading, Stack, Text } from '@chakra-ui/react';
+
+const ResetPassword = () => {
+  return (
+    <section>
+        <Box maxW={'100vw'} p='5rem' >
+            <Text my='1rem'>Create account</Text>            
+
+            <Grid templateColumns='repeat(2, 1fr)' gap={'2rem'} >
+                <GridItem colSpan={[2,2,1,1]}>
+                    <Stack spacing={'2rem'}>
+                    <Heading size={['lg']}>
+                        Reset your Password
+                    </Heading>
+
+                    <Text>
+                     Choose how you would you like to reset your <br /> password
+                    </Text>
+                    </Stack>
+                </GridItem>
+                
+                <GridItem colSpan={[2,2,1,1]}>
+                    <Stack spacing={'2rem'} >
+                        <Button>
+                            Via Email Address
+                        </Button>
+
+                        <Button>
+                            Via Phone Number
+                        </Button>
+                    </Stack>
+                </GridItem>
+
+            </Grid>
+        </Box>
+    </section>
+  )
+}
+
+export default ResetPassword

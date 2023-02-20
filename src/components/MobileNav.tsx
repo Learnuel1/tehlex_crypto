@@ -15,19 +15,19 @@ const MobileNav = () => {
             />
             <MenuList w={'50vw'} h='50vh' gap={'2rem'}>
                 <MenuItem >
-                    <NavLink to={'/'} style={({isActive}) => isActive? {color:'blue'}: {color:'black'}} >
+                    <NavLink to={'/about'} style={({isActive}) => isActive? {color:'blue'}: {color:'black'}} >
                         About Us
                     </NavLink>
                 </MenuItem>
 
                 <MenuItem >
-                    <NavLink to={'/'} style={({isActive}) => isActive? {color:'blue'}: {color:'black'}}>
+                    <NavLink to={'/support'} style={({isActive}) => isActive? {color:'blue'}: {color:'black'}}>
                         Support
                     </NavLink>
                 </MenuItem>
 
                 <MenuItem >
-                    <NavLink to={'/'} style={({isActive}) => isActive? {color:'blue'}: {color:'black'}}>
+                    <NavLink to={'/faqs'} style={({isActive}) => isActive? {color:'blue'}: {color:'black'}}>
                         FAQs
                     </NavLink>
                 </MenuItem>
