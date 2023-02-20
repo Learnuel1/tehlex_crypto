@@ -6,7 +6,7 @@ import team from '.././assets/images/ourteam.png'
 const AboutUs = () => {
   return (
     <section>
-        <Image alt='about_us' src={about} loading='lazy' w='fit-content' p='1rem' mt={'1rem'} />
+        <Image alt='about_us' src={about} loading='lazy' w='fit-content' h={['200px','210px','fit-content']} p='1rem' mt={'1rem'} />
         <Box  maxW='100vw' >
             <Stack ml={['1rem','1rem','2rem','2rem']} color='blue' fontSize={'.8rem'}>            
                 <Link to={'/'}>
@@ -60,8 +60,8 @@ const AboutUs = () => {
                     </Heading>
                 </Stack>
 
-                <HStack w={['90vw','90vw','80vw','70vw']} mx='auto' wrap={'wrap'} spacing='1rem' gap={'1rem'} >
-                    <Stack bg={'white'} pb='.5rem'>
+                <HStack w={['90vw','90vw','80vw','70vw']} mx='auto' wrap={'wrap'}  gap={'1rem'} >
+                    <Stack bg={'white'} pb='.5rem' >
                         <Image alt='our_team' src={team} w='200px' loading='lazy' />
                         <Text fontWeight={'bold'} px='.5rem'>Vincent Onwudiwe</Text>
                         <Text px='.5rem'>Project Manager/CEO</Text>

@@ -43,7 +43,7 @@ const Home = () => {
 
             <GridItem colSpan={[2,2,1,1]}>
               <VStack mt={'2rem'}>
-                <Image alt='brand_img' src={brand_img} w='500px'  />
+                <Image alt='brand_img'  src={brand_img} w='500px'  />
               </VStack>
             </GridItem>
           </Grid>         
