@@ -6,9 +6,8 @@ import MobileNav from './MobileNav';
 const Navigation = () => {
     const navigate = useNavigate()
   return (
-    <nav>
-        <HStack wrap={'wrap'} w='100vw' p='1rem'  
-             px='1rem' boxShadow={'base'} >
+        <HStack w='100vw' p='1rem' position='sticky' bg='white' top={0}   zIndex={1}
+             px='1rem' boxShadow={'dark-lg'} >
             <Flex w='30%' alignItems={'center'} justify='left'>                
                 <NavLink to={'/'} style={({isActive}) => isActive? {color:'blue'}: {color:'black'}} >
                      <Image alt='logo' src={logo} w={['200px','200px','150px','150px']}  />
@@ -44,11 +43,8 @@ const Navigation = () => {
                  <MobileNav />
                 </Flex>
                 
-            </Flex>
-
-            
+            </Flex>            
         </HStack>
-    </nav>
   )
 }
 
