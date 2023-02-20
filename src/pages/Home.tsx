@@ -10,7 +10,7 @@ import Testimonial from '../components/HomeComonents/Testimonial';
 const Home = () => {
   return (
     <section>
-        <Box maxW='100vw' minH={'100vh'} bg='blue' p='2rem'>
+        <Box maxW='100vw' minH={'fit-content'} bg='blue' p='2rem'>
           <Grid templateColumns='repeat(2, 1fr)' gap={'1rem'}>
             <GridItem colSpan={[2,2,1,1]}>
               <VStack color={'white'} spacing='2.5rem' mt={'2rem'}>
