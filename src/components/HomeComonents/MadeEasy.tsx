@@ -7,7 +7,7 @@ import reg from '../../assets/images/reg.png'
 
 const MadeEasy = () => {
   return (
-    <Box p='2rem' m='2rem' w='95vw' mx={'auto'}>
+    <Box p='2rem' m='1rem' w='95vw' mx={'auto'}>
         <Grid templateColumns='repeat(2, 1fr)' gap={'1rem'}>
             <GridItem colSpan={[2,2,1,1]} m='2rem'>
                 <Text color={'blue'} >MADE EASY</Text>
@@ -40,9 +40,9 @@ const MadeEasy = () => {
                 </Stack>
             </GridItem>
 
-            <GridItem colSpan={[2,2,1,1]} display={['none', 'none', 'block', 'block']} >
-                <VStack bg={'yellow.300'} w='250px' h='300px'>
-                    <Image alt='reg_img' src={reg} w='250px' mt='5rem' loading='lazy' />
+            <GridItem colSpan={[2,2,1,1]}  >
+                <VStack >
+                    <Image alt='reg_img' src={reg} w='400px' mt='1rem' loading='lazy' />
                 </VStack>
             </GridItem>
         </Grid>

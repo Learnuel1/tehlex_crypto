@@ -1,12 +1,15 @@
 import { Box, Button, Flex, FormControl, FormLabel, Grid, GridItem, Heading, Image, Input, Stack, Text, Textarea, VStack } from '@chakra-ui/react'
-import support from '.././assets/images/support.png'
+import support from '.././assets/images/support.png';
+import { GoLocation } from "react-icons/go";
+import { AiTwotoneMail } from "react-icons/ai";
+import { FiPhoneCall } from "react-icons/fi";
 
 const Support = () => {
   return (
     <section>
         <Box maxW={'100vw'} >
          <Image alt='wupport' src={support} loading='lazy' w='fit-content'
-         h={['200px','210px','fit-content']} p='1rem' mt={'1rem'} />
+         h={['150px','200px','fit-content']} p='1rem' mt={'1rem'} />
 
             <Stack p={'1rem'} >                
                 <VStack>
@@ -64,23 +67,23 @@ const Support = () => {
                     <VStack p='1.5rem' bg='blue' mt={'4rem'} color='white' rounded={'3xl'} spacing='1.5rem' > 
                         <Heading size={'sm'}>Contact Info</Heading>
 
-                        <Stack spacing={0}>
-                             <span>icon</span>
+                        <VStack spacing={0}>
+                             <GoLocation size={'1.5rem'} />
                             <Text>Lekki Phase 1, Lagos</Text>
                             <Text>Lugbe, Abuja</Text>
-                        </Stack>
+                        </VStack>
 
-                        <Stack spacing={0}>
-                             <span>icon</span>
+                        <VStack spacing={0}>
+                             <AiTwotoneMail size={'1.5rem'} />
                             <Text>support@website.com</Text>                            
-                        </Stack>
+                        </VStack>
 
-                        <Stack spacing={0}>
-                             <span>icon</span>
+                        <VStack spacing={0}>
+                             <FiPhoneCall size={'1.5rem'} />
                             <Text>+234 (480) 555-0103</Text>   
                             <Text>+234 (480) 555-0103</Text>  
                             <Text>+234 (480) 555-0103</Text>                       
-                        </Stack>
+                        </VStack>
                     </VStack>
                 </GridItem>
             </Grid>

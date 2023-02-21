@@ -5,12 +5,12 @@ import { GiRoyalLove } from "react-icons/gi";
 import { BsFacebook, BsInstagram } from "react-icons/bs";
 import { AiFillTwitterCircle, AiFillYoutube, AiFillLinkedin, AiOutlineCopyrightCircle } from "react-icons/ai";
 import NewsLetter from './NewsLetter';
-import logo from '../assets/images/logo.png'
+import logo from '../assets/images/logo1.png'
 
 const Footer = () => {
   return (
     <footer>
-        <Box p={'1.5rem'} bg='blackAlpha.700'>
+        <Box p={'1.5rem'} bg='black'>
             <Grid templateColumns='repeat(4, 1fr)' gap={'2rem'}>
                 <GridItem colSpan={[4, 4, 1, 1]}>
                     <NewsLetter />
@@ -18,7 +18,7 @@ const Footer = () => {
 
                 <GridItem colSpan={[2, 2, 1, 1]} >
                     <VStack w='100%'>
-                        <Heading size={'md'}>Get <br /> started</Heading>
+                        <Heading color={'gray.600'} size={'md'}>Get <br /> started</Heading>
                         <Stack color={'white'}>
                             <Link to={'/'}> Sell GiftCard </Link>
                             <Link to={'/'}> Sell Crypto </Link>
@@ -29,7 +29,7 @@ const Footer = () => {
 
                 <GridItem colSpan={[2, 2, 1, 1]}>
                     <VStack w='100%'>
-                            <Heading size={'md'}> Find out <br /> More</Heading>
+                            <Heading color={'gray.600'} size={'md'}> Find out <br /> More</Heading>
                             <Stack color={'white'}>
                                 <Link to={'/'}> About Us </Link>
                                 <Link to={'/'}> Our Team </Link>
@@ -41,7 +41,7 @@ const Footer = () => {
                 
                 <GridItem colSpan={[4, 4, 1, 1]} mb='2rem'>
                     <VStack w='100%' justify={'right'}>
-                            <Heading size={'md'}> Social <br /> Handles</Heading>
+                            <Heading color={'gray.600'} size={'md'}> Social <br /> Handles</Heading>
                             <HStack  color={'white'} gap='1rem' wrap={'wrap'}>
                                 <BsFacebook size={'1.3rem'} />
                                 <BsInstagram size={'1.3rem'} />

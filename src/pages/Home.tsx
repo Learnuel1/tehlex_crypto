@@ -30,7 +30,8 @@ const Home = () => {
                 <br />value-added rates, and super-fast payouts.
                 </Text>                
               </VStack>
-              <HStack justify={'space-around'} mt='2rem'>
+
+              <HStack display={['none', 'none', 'flex', 'flex']} justify={'space-around'} mt='2rem'>
                   <Button bg='white' color={'black'}>
                     Start Trading
                   </Button>
@@ -46,7 +47,18 @@ const Home = () => {
                 <Image alt='brand_img'  src={brand_img} w='500px'  />
               </VStack>
             </GridItem>
-          </Grid>         
+          </Grid>   
+
+          <VStack mt='1rem' gap='1rem' display={['flex', 'flex','none', 'none']}>
+               <Button w='50%' bg='white' color={'black'} >
+                      Start Trading
+              </Button>
+
+              <Button colorScheme={'none'} border='1px' rounded={'2xl'} w='50%' >
+                      Join Now
+            </Button>
+          </VStack>
+
         </Box>
         <OurStats />
         <OurCoreServices />

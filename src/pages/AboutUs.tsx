@@ -1,7 +1,47 @@
 import { Box, Heading, HStack, Image, Stack, Text, VStack } from '@chakra-ui/react'
 import { Link } from 'react-router-dom'
 import about from '.././assets/images/about.png';
-import team from '.././assets/images/ourteam.png'
+import team from '.././assets/images/ourteam.png';
+import AliceCarousel from 'react-alice-carousel';
+import 'react-alice-carousel/lib/alice-carousel.css';
+
+
+const responsive = {
+    0: { items: 2 },
+    568: { items: 2 },
+    1024: { items: 4 },
+  };
+
+  const items = [
+    <div className="item" data-value="1">
+        <Stack bg={'white'} pb='.5rem' >
+            <Image alt='our_team' src={team} w='200px' loading='lazy' />
+            <Text fontWeight={'bold'} px='.5rem'>Vincent Onwudiwe</Text>
+            <Text px='.5rem'>Project Manager/CEO</Text>
+        </Stack>
+    </div>,
+    <div className="item" data-value="2">
+        <Stack bg={'white'} pb='.5rem'>
+            <Image alt='our_team' src={team} w='200px' loading='lazy' />
+            <Text fontWeight={'bold'} px='.5rem'>Vincent Onwudiwe</Text>
+            <Text px='.5rem'>Project Manager/CEO</Text>
+        </Stack>
+    </div>,
+    <div className="item" data-value="3">
+        <Stack bg={'white'} pb='.5rem'>
+            <Image alt='our_team' src={team} w='200px' loading='lazy' />
+            <Text fontWeight={'bold'} px='.5rem'>Vincent Onwudiwe</Text>
+            <Text px='.5rem'>Project Manager/CEO</Text>
+        </Stack>
+    </div>,
+    <div className="item" data-value="4">
+        <Stack bg={'white'} pb='.5rem'>
+            <Image alt='our_team' src={team} w='200px' loading='lazy' />
+            <Text fontWeight={'bold'} px='.5rem'>Vincent Onwudiwe</Text>
+            <Text px='.5rem'>Project Manager/CEO</Text>
+        </Stack>
+    </div>,    
+];
 
 const AboutUs = () => {
   return (
@@ -9,9 +49,11 @@ const AboutUs = () => {
         <Image alt='about_us' src={about} loading='lazy' w='fit-content' h={['200px','210px','fit-content']} p='1rem' mt={'1rem'} />
         <Box  maxW='100vw' >
             <Stack ml={['1rem','1rem','2rem','2rem']} color='blue' fontSize={'.8rem'}>            
-                <Link to={'/'}>
-                    Check out our Gallery
-                </Link>
+                <Text>
+                    <Link to={'/'}>
+                        Check out our Gallery
+                    </Link>
+                </Text>
             </Stack>
 
             <Stack my={'2rem'} px={['2rem','2rem','3rem', '5rem']} gap={'2rem'}>
@@ -27,7 +69,7 @@ const AboutUs = () => {
                 amet sed nulla sagittis ut tempus ipsum dolor. Lacus arcu nisi sed aliquam. Sit aliquam eget malesuada odio. Mauris commodo massa sed sed nec felis neque facilisis. amet sed nulla sa
                 </Text>
 
-                <HStack  p='.5rem' fontSize={['.6rem', '8rem', '1rem']} boxShadow={'base'} justify='space-evenly'   >
+                <HStack  p='.5rem' gap={'2rem'} justify='center' wrap={'wrap'} >
                     <Stack>
                         <Text fontWeight={'bold'} >Founded</Text>
                         <Heading size={'md'}>2017</Heading>
@@ -37,7 +79,7 @@ const AboutUs = () => {
                         <Text fontWeight={'bold'}>Employees</Text>
                         <Heading size={'md'}>10</Heading>
                     </Stack>
-
+                       
                     <Stack>
                         <Text fontWeight={'bold'}>Customer</Text>
                         <Heading size={'md'}>500</Heading>
@@ -52,39 +94,18 @@ const AboutUs = () => {
 
             {/* our team */}
 
-            <Box  px='5rem' my={'3rem'} bg='blue.100' p={'4rem'}>
-                <Stack mb={'3rem'}>
-                    <Text color={'blue'}>Our Team</Text>
-                    <Heading  size={['lg']}>
-                        Meet the creative team
-                    </Heading>
-                </Stack>
-
-                <HStack w={['90vw','90vw','80vw','70vw']} mx='auto' wrap={'wrap'}  gap={'1rem'} >
-                    <Stack bg={'white'} pb='.5rem' >
-                        <Image alt='our_team' src={team} w='200px' loading='lazy' />
-                        <Text fontWeight={'bold'} px='.5rem'>Vincent Onwudiwe</Text>
-                        <Text px='.5rem'>Project Manager/CEO</Text>
-                    </Stack>
-
-                    <Stack bg={'white'} pb='.5rem'>
-                        <Image alt='our_team' src={team} w='200px' loading='lazy' />
-                        <Text fontWeight={'bold'} px='.5rem'>Vincent Onwudiwe</Text>
-                        <Text px='.5rem'>Project Manager/CEO</Text>
-                    </Stack>
-
-                    <Stack bg={'white'} pb='.5rem'>
-                        <Image alt='our_team' src={team} w='200px' loading='lazy' />
-                        <Text fontWeight={'bold'} px='.5rem'>Vincent Onwudiwe</Text>
-                        <Text px='.5rem'>Project Manager/CEO</Text>
-                    </Stack>
-
-                    <Stack bg={'white'} pb='.5rem'>
-                        <Image alt='our_team' src={team} w='200px' loading='lazy' />
-                        <Text fontWeight={'bold'} px='.5rem'>Vincent Onwudiwe</Text>
-                        <Text px='.5rem'>Project Manager/CEO</Text>
-                    </Stack>
-                </HStack>
+            <Box w='90vw' mx='auto'>
+            <AliceCarousel
+                mouseTracking
+                items={items}
+                responsive={responsive}
+                autoPlay 
+                autoPlayInterval={1000}
+                animationDuration={1000}
+                animationType="fadeout"
+                infinite
+                disableButtonsControls
+            />
             </Box>
 
             {/* part of our team */}

@@ -4,7 +4,7 @@ import React from 'react'
 const NewsLetter = () => {
   return (
     <Box p='.5rem'>
-        <Heading size={'md'} m='.7rem'>
+        <Heading color={'gray.600'} size={'md'} m='.7rem'>
             Subscribe Newsletter
         </Heading>
         <form>
