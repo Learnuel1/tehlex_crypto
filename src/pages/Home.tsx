@@ -1,6 +1,9 @@
 import { Box, Grid, GridItem, VStack, Image, Stack, Text, Heading, HStack, Button } from '@chakra-ui/react'
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import brand_img from '../assets/images/home_img.png'
+import CardCarousel from '../components/HomeComonents/CardCarousel';
+import CoinCarousel from '../components/HomeComonents/CoinCarousel';
 import EarnPoint from '../components/HomeComonents/EarnPoint';
 import MadeEasy from '../components/HomeComonents/MadeEasy';
 import OurCoreServices from '../components/HomeComonents/OurCoreServices';
@@ -8,6 +11,7 @@ import OurStats from '../components/HomeComonents/OurStats';
 import Testimonial from '../components/HomeComonents/Testimonial';
 
 const Home = () => {
+  const navigate = useNavigate();
   return (
     <section>
         <Box maxW='100vw' minH={'fit-content'} bg='blue' p='2rem'>
@@ -32,13 +36,17 @@ const Home = () => {
               </VStack>
 
               <HStack display={['none', 'none', 'flex', 'flex']} justify={'space-around'} mt='2rem'>
-                  <Button bg='white' color={'black'}>
-                    Start Trading
-                  </Button>
+              <Button w='50%' bg='white' color={'black'}
+                onClick={()=> navigate('/login') }
+               >
+                      Start Trading
+              </Button>
 
-                  <Button colorScheme={'none'} border='1px' rounded={'2xl'} >
-                    Join Now
-                  </Button>
+              <Button w='50%' bg='white' color={'black'}
+                onClick={()=> navigate('/register') }
+               >
+                    Join now
+              </Button>
                 </HStack>
             </GridItem>
 
@@ -49,17 +57,25 @@ const Home = () => {
             </GridItem>
           </Grid>   
 
+            {/* Buttons under home page */}
+
           <VStack mt='1rem' gap='1rem' display={['flex', 'flex','none', 'none']}>
-               <Button w='50%' bg='white' color={'black'} >
+               <Button w='50%' bg='white' color={'black'}
+                onClick={()=> navigate('/login') }
+               >
                       Start Trading
               </Button>
 
-              <Button colorScheme={'none'} border='1px' rounded={'2xl'} w='50%' >
-                      Join Now
-            </Button>
+              <Button w='50%' bg='white' color={'black'}
+                onClick={()=> navigate('/register') }
+               >
+                    Join now
+              </Button>
           </VStack>
 
         </Box>
+        <CoinCarousel />
+        <CardCarousel />
         <OurStats />
         <OurCoreServices />
         <MadeEasy />

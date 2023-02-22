@@ -18,6 +18,7 @@ const responsive = {
 
 
 
+
 const items = [
   <div className="item" data-value="1">
     <Stack bg={'white'} p='1rem' rounded={'2xl'} m='1rem' >

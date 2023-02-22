@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import signin from '../assets/images/signin.png'
 import signin_logo from '../assets/images/sign_in_logo.png'
 
-const Signin = () => {
+const Signup = () => {
   return (
     <section>
         <Box maxW={'100vw'} p='3rem'>
@@ -59,4 +59,4 @@ const Signin = () => {
   )
 }
 
-export default Signin
+export default Signup

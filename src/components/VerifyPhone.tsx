@@ -4,14 +4,13 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios'
 import { VerifyOtp } from './Api';
 
-
-
-const VerifyEmail = () => {
+const VerifyPhone = () => {
     const location = useLocation();
     const [otp, setOtp] = useState();
     console.log(otp);
     const navigate = useNavigate();
 
+    
     // handle confirm otp
     const handleConfirm = (e:React.FormEvent) => {
         e.preventDefault();
@@ -19,14 +18,14 @@ const VerifyEmail = () => {
         .post(VerifyOtp, otp)
         .then(function (response) {
             console.log(response);
-            navigate('/feedback');
+            // navigate('/feedback')
           })
           .catch(function (error) {
             alert(error);
           });
-        // navigate('/feedback')
+        navigate('/feedback')
     };
-    
+
   return (
     <section>
     <Box maxW={'100vw'} p='5rem' >
@@ -72,4 +71,4 @@ const VerifyEmail = () => {
   )
 }
 
-export default VerifyEmail
+export default VerifyPhone
