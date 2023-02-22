@@ -37,7 +37,7 @@ export default function AccountVerification() {
             });
         }
         // testing
-        navigate('/verifyPhone', {state: phone})
+        navigate('/verifyEmail', {state: mail})
     };
     
     // protecting route
@@ -75,8 +75,8 @@ export default function AccountVerification() {
                             Via Email Address
                         </Button>
 
-                        <Button
-                        onClick={() => handleVerify('phone')}
+                        <Button disabled
+                        // onClick={() => handleVerify('phone')}
                         >
                             Via Phone Number
                         </Button>
