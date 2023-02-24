@@ -1,9 +1,11 @@
-import { Box, Button, Checkbox, FormControl, FormLabel, Grid, GridItem, Heading, Image, Input, Stack, Text, VStack } from '@chakra-ui/react'
+import { Box, Button, Checkbox, FormControl, FormLabel, Grid, GridItem, Heading, Image, Input, Stack, Text, useToast, VStack } from '@chakra-ui/react'
 import axios from 'axios';
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom'
 import register from '../assets/images/register.png'
 import signin_logo from '../assets/images/sign_in_logo.png'
+import { REGISTRATION_ENDPOINT } from '../endpoint/route';
+import { thelex } from '../endpoint/thelex';
 import { RegisterAuth } from './Api';
 
 interface FormProps {
@@ -28,6 +30,7 @@ const Register = () => {
     const [formData, setFormData] = useState<FormProps>(initial);
     
     const navigate = useNavigate();
+    const toast = useToast();
 
     //handle onchange
     const handleOnchange = (e:React.FormEvent) => {
@@ -38,20 +41,31 @@ const Register = () => {
     } ;
 
     // handle create account
-
     const handleCreateAcount = (e:React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        axios
-        .post(RegisterAuth, formData)
-        .then(response => {
-        //    console.log(response.data)
-        // navigate('/accountverification', {state: formData})
+        thelex
+        .post(REGISTRATION_ENDPOINT.REGISTER, formData)
+        .then(res => {  
+            toast({
+                title: res.statusText,
+                description: "We've created your account for you.",
+                status: 'success',
+                duration: 4000,
+                isClosable: true,
+              })
+        navigate('/accountverification', {state: formData})
         })
         .catch(function (error) {
-            alert(error)
+            toast({
+                title: error.response.statusText && 'Error',
+                description: "whopps something went wrong!!!",
+                status: 'error',
+                duration: 4000,
+                isClosable: true,
+              })
           });
           
-          navigate('/accountverification', {state: formData})
+        //   navigate('/accountverification', {state: formData})
     }
 
   return (
@@ -78,7 +92,7 @@ const Register = () => {
 
                 <form onSubmit={handleCreateAcount}>
                         <Stack mt='2rem' spacing={'1rem'}>
-                            <FormControl w={['90%','90%','60%','60%']}>
+                            <FormControl w={['90%','90%','60%','60%']} isRequired>
                                 <FormLabel>Full Name</FormLabel>
                                 <Input type={'text'} placeholder='Full Name' name='name'
                                 value={formData.name}
@@ -86,7 +100,7 @@ const Register = () => {
                                 />
                             </FormControl>
 
-                            <FormControl w={['90%','90%','60%','60%']}>
+                            <FormControl w={['90%','90%','60%','60%']} isRequired>
                                 <FormLabel>Username</FormLabel>
                                 <Input type={'text'} placeholder='Username' name='username'
                                 value={formData.username}
@@ -94,7 +108,7 @@ const Register = () => {
                                 />
                             </FormControl>
 
-                            <FormControl w={['90%','90%','60%','60%']}>
+                            <FormControl w={['90%','90%','60%','60%']} isRequired>
                                 <FormLabel>Email</FormLabel>
                                 <Input type={'email'} placeholder='Email' name='email' 
                                 value={formData.email}
@@ -102,7 +116,7 @@ const Register = () => {
                                 />
                             </FormControl>
 
-                            <FormControl w={['90%','90%','60%','60%']}>
+                            <FormControl w={['90%','90%','60%','60%']} isRequired>
                                 <FormLabel>Phone</FormLabel>
                                 <Input type={'tel'} placeholder='phone_number' name='phone'
                                 value={formData.phone}
@@ -110,7 +124,7 @@ const Register = () => {
                                 />
                             </FormControl>
 
-                            <FormControl w={['90%','90%','60%','60%']}>
+                            <FormControl w={['90%','90%','60%','60%']} isRequired>
                                 <FormLabel>Password</FormLabel>
                                 <Input type={'password'} placeholder='password' name='password'
                                 value={formData.password}
@@ -131,7 +145,7 @@ const Register = () => {
                             </Button>
 
                             <Text color='blue'>
-                                Don’t have an account? <Link to={'/signin'} >Create one</Link>
+                                Already have an account? <Link to={'/login'} >Login</Link>
                             </Text>
                         </Stack>
                     </form>
@@ -143,3 +157,4 @@ const Register = () => {
 }
 
 export default Register
+

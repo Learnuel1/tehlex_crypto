@@ -1,12 +1,15 @@
-import { Box, Button, Grid, GridItem, Heading, Stack, Text } from '@chakra-ui/react';
+import { Box, Button, Grid, GridItem, Heading, Stack, Text, useToast } from '@chakra-ui/react';
 import axios from 'axios';
 import { useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { REGISTRATION_ENDPOINT } from '../endpoint/route';
+import { thelex } from '../endpoint/thelex';
 import { verifyViaEmailAuth, verifyViaPhoneAuth } from './Api';
 
 export default function AccountVerification() {
     const location = useLocation();
     const navigate = useNavigate();
+    const toast = useToast();
 
     const mail = location.state.email;
     const phone = location.state.phone;
@@ -15,25 +18,49 @@ export default function AccountVerification() {
     const handleVerify = (type:string) => {
         if(type ==='email'){           
             // post to email endpoint
-            axios
-            .post(verifyViaEmailAuth, {email: mail})
-            .then(response => {
-            alert(response.data)
+            thelex
+            .post(REGISTRATION_ENDPOINT.VERIFY, {email: mail})
+            .then(res => {
+                toast({
+                    title: res.statusText,
+                    description: "otp code will be sent to your Email provided",
+                    status: 'success',
+                    duration: 4000,
+                    isClosable: true,
+                  })
             navigate('/verifyEmail', {state: mail})
             })
-            .catch(function (error) {
-                alert(error)
+            .catch( (error) => {
+                toast({
+                    title: error.response.statusText,
+                    description: "verification error",
+                    status: 'error',
+                    duration: 4000,
+                    isClosable: true,
+                  })
             });
         } else if(type === 'phone'){
             // post to phone number
-            axios
-            .post(verifyViaPhoneAuth, {phone: phone} )
-            .then(response => {
-            alert(response.data)
+            thelex
+            .post(REGISTRATION_ENDPOINT.VERIFY, {phone: phone} )
+            .then(res => {
+                toast({
+                    title: res.statusText,
+                    description: "Verification successful",
+                    status: 'success',
+                    duration: 4000,
+                    isClosable: true,
+                  })
             navigate('/verifyPhone', {state: phone})
             })
             .catch(function (error) {
-                alert(error)
+                toast({
+                    title: error.response.statusText,
+                    description: "Verification Not Successfull",
+                    status: 'error',
+                    duration: 4000,
+                    isClosable: true,
+                  })
             });
         }
         // testing
@@ -47,8 +74,6 @@ export default function AccountVerification() {
         }
     },[]);
 
-    
-    console.log(location.state)
   return (
     <section>
         <Box maxW={'100vw'} p='5rem' >
@@ -88,3 +113,5 @@ export default function AccountVerification() {
     </section>
   )
 }
+
+

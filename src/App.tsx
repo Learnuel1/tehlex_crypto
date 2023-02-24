@@ -1,6 +1,7 @@
 import { Route, Routes } from "react-router-dom"
 import AccountVerification from "./components/AccountVerification"
 import Feedback from "./components/Feedback"
+import NotFound from "./components/NotFound"
 import Register from "./components/Register"
 import SharedComponent from "./components/SharedComponent"
 import Signup from "./components/Signup"
@@ -32,6 +33,7 @@ function App() {
               <Route path="verifyPhone" element={<VerifyPhone />} />
               <Route path="feedback" element={<Feedback />} />
           </Route>
+          <Route path="*" element={<NotFound />} />
       </Routes>
    </>
   )

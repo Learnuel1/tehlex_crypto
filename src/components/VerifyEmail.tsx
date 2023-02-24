@@ -1,4 +1,4 @@
-import { Box, Button, Grid, GridItem, Heading, HStack, PinInput, PinInputField, Stack, Text } from '@chakra-ui/react';
+import { Box, Button, Grid, GridItem, Heading, HStack, PinInput, PinInputField, Stack, Text, useToast } from '@chakra-ui/react';
 import React, { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios'
@@ -9,24 +9,36 @@ import { VerifyOtp } from './Api';
 const VerifyEmail = () => {
     const location = useLocation();
     const [otp, setOtp] = useState();
-    console.log(otp);
+    // console.log(otp);
+    const toast = useToast();
     const navigate = useNavigate();
 
     // handle confirm otp
     const handleConfirm = (e:React.FormEvent) => {
         e.preventDefault();
         axios
-        .post(VerifyOtp, otp)
-        .then(function (response) {
-            console.log(response);
+        .post(VerifyOtp, {'otp': otp})
+        .then((res) => {
+            toast({
+                title: res.statusText,
+                description: "Verification successfull",
+                status: 'success',
+                duration: 4000,
+                isClosable: true,
+              });
             navigate('/feedback');
           })
-          .catch(function (error) {
-            alert(error);
+          .catch((error) => {
+            toast({
+                title: 'wrong otp',
+                description: "verification not successfull",
+                status: 'error',
+                duration: 4000,
+                isClosable: true,
+              })
           });
-        // navigate('/feedback')
     };
-    
+
   return (
     <section>
     <Box maxW={'100vw'} p='5rem' >
@@ -49,7 +61,7 @@ const VerifyEmail = () => {
                <form onSubmit={handleConfirm}>
                 <Stack spacing={'4rem'}>
                         <HStack spacing={'1rem'}> 
-                            <PinInput otp type='number' 
+                            <PinInput  otp type='number' 
                             onChange={(e:any) => setOtp(e) }
                             >
                                 <PinInputField required />

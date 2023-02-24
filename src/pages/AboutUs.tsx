@@ -14,31 +14,31 @@ const responsive = {
 
   const items = [
     <div className="item" data-value="1">
-        <Stack bg={'white'} pb='.5rem' >
+        <Stack bg={'white'} pb='.5rem' w='200px' >
             <Image alt='our_team' src={team} w='200px' loading='lazy' />
             <Text fontWeight={'bold'} px='.5rem'>Vincent Onwudiwe</Text>
             <Text px='.5rem'>Project Manager/CEO</Text>
         </Stack>
     </div>,
     <div className="item" data-value="2">
-        <Stack bg={'white'} pb='.5rem'>
+        <Stack bg={'white'} pb='.5rem' w='200px'>
             <Image alt='our_team' src={team} w='200px' loading='lazy' />
-            <Text fontWeight={'bold'} px='.5rem'>Vincent Onwudiwe</Text>
-            <Text px='.5rem'>Project Manager/CEO</Text>
+            <Text fontWeight={'bold'} px='.5rem'>John Emmanuel</Text>
+            <Text px='.5rem'>Product Manager / Growth</Text>
         </Stack>
     </div>,
     <div className="item" data-value="3">
-        <Stack bg={'white'} pb='.5rem'>
+        <Stack bg={'white'} pb='.5rem' w='200px'>
             <Image alt='our_team' src={team} w='200px' loading='lazy' />
-            <Text fontWeight={'bold'} px='.5rem'>Vincent Onwudiwe</Text>
-            <Text px='.5rem'>Project Manager/CEO</Text>
+            <Text fontWeight={'bold'} px='.5rem'>Uche ThankGod</Text>
+            <Text px='.5rem'>Lead Product Designer / Engineer</Text>
         </Stack>
     </div>,
     <div className="item" data-value="4">
-        <Stack bg={'white'} pb='.5rem'>
+        <Stack bg={'white'} pb='.5rem' w='200px'>
             <Image alt='our_team' src={team} w='200px' loading='lazy' />
-            <Text fontWeight={'bold'} px='.5rem'>Vincent Onwudiwe</Text>
-            <Text px='.5rem'>Project Manager/CEO</Text>
+            <Text fontWeight={'bold'} px='.5rem'>Oladimeji</Text>
+            <Text px='.5rem'>CTO / Chief Engineering</Text>
         </Stack>
     </div>,    
 ];
