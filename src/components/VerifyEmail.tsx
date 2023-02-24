@@ -1,8 +1,8 @@
 import { Box, Button, Grid, GridItem, Heading, HStack, PinInput, PinInputField, Stack, Text, useToast } from '@chakra-ui/react';
 import React, { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import axios from 'axios'
-import { VerifyOtp } from './Api';
+import { REGISTRATION_ENDPOINT } from '../endpoint/route';
+import { thelex } from '../endpoint/thelex';
 
 
 
@@ -16,12 +16,12 @@ const VerifyEmail = () => {
     // handle confirm otp
     const handleConfirm = (e:React.FormEvent) => {
         e.preventDefault();
-        axios
-        .post(VerifyOtp, {'otp': otp})
+        thelex
+        .post( REGISTRATION_ENDPOINT.VERIFY_OTP , {'otp': otp})
         .then((res) => {
             toast({
                 title: res.statusText,
-                description: "Verification successfull",
+                description: "Registration Completed Successfully",
                 status: 'success',
                 duration: 4000,
                 isClosable: true,
@@ -31,7 +31,7 @@ const VerifyEmail = () => {
           .catch((error) => {
             toast({
                 title: 'wrong otp',
-                description: "verification not successfull",
+                description: "Registration Not Completed Successfully",
                 status: 'error',
                 duration: 4000,
                 isClosable: true,

@@ -6,7 +6,7 @@ import register from '../assets/images/register.png'
 import signin_logo from '../assets/images/sign_in_logo.png'
 import { REGISTRATION_ENDPOINT } from '../endpoint/route';
 import { thelex } from '../endpoint/thelex';
-import { RegisterAuth } from './Api';
+
 
 interface FormProps {
     name: string;
@@ -48,7 +48,7 @@ const Register = () => {
         .then(res => {  
             toast({
                 title: res.statusText,
-                description: "We've created your account for you.",
+                description: "Registration successful",
                 status: 'success',
                 duration: 4000,
                 isClosable: true,

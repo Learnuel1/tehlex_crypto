@@ -1,8 +1,8 @@
 
 export const REGISTRATION_ENDPOINT = {
     REGISTER: '/auth/register',
-    VERIFY: '/auth/verify',
-
+    SENT_OTP: '/auth/verify',
+    VERIFY_OTP: '/auth/create'
 }
 
 export const LOGIN_ENDPOINT = {

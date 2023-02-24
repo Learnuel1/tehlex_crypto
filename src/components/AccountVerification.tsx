@@ -1,10 +1,9 @@
 import { Box, Button, Grid, GridItem, Heading, Stack, Text, useToast } from '@chakra-ui/react';
-import axios from 'axios';
 import { useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { REGISTRATION_ENDPOINT } from '../endpoint/route';
 import { thelex } from '../endpoint/thelex';
-import { verifyViaEmailAuth, verifyViaPhoneAuth } from './Api';
+
 
 export default function AccountVerification() {
     const location = useLocation();
@@ -19,11 +18,11 @@ export default function AccountVerification() {
         if(type ==='email'){           
             // post to email endpoint
             thelex
-            .post(REGISTRATION_ENDPOINT.VERIFY, {email: mail})
+            .post(REGISTRATION_ENDPOINT.SENT_OTP, {email: mail})
             .then(res => {
                 toast({
                     title: res.statusText,
-                    description: "otp code will be sent to your Email provided",
+                    description: "OTP Sent Successfully",
                     status: 'success',
                     duration: 4000,
                     isClosable: true,
@@ -40,9 +39,10 @@ export default function AccountVerification() {
                   })
             });
         } else if(type === 'phone'){
+
             // post to phone number
             thelex
-            .post(REGISTRATION_ENDPOINT.VERIFY, {phone: phone} )
+            .post(REGISTRATION_ENDPOINT.VERIFY_OTP, {phone: phone} )
             .then(res => {
                 toast({
                     title: res.statusText,
@@ -63,8 +63,7 @@ export default function AccountVerification() {
                   })
             });
         }
-        // testing
-        navigate('/verifyEmail', {state: mail})
+        
     };
     
     // protecting route
