@@ -1,5 +1,5 @@
  const config = {
-    API: () => "https://tehlex.onrender.com/api/v1",
+    API: () => "https://hr-mgt.onrender.com",
     LOCAL_API: () => "http://localhost:5000/api/v1"
 }
 

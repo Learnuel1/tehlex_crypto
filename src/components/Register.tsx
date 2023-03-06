@@ -1,10 +1,11 @@
-import { Box, Button, Checkbox, FormControl, FormLabel, Grid, GridItem, Heading, Image, Input, Stack, Text, useToast, VStack } from '@chakra-ui/react'
-import axios from 'axios';
+import { Box, Button, Checkbox, FormControl, FormLabel, Grid, GridItem, Heading, Image, Input, InputGroup, InputRightElement, Stack, Text, useToast, VStack } from '@chakra-ui/react'
+
 import React, { useState } from 'react';
+import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 import { Link, useNavigate } from 'react-router-dom'
 import register from '../assets/images/register.png'
 import signin_logo from '../assets/images/sign_in_logo.png'
-import { REGISTRATION_ENDPOINT } from '../endpoint/route';
+import {  USER_REGISTRATION_ENDPOINT } from '../endpoint/route';
 import { thelex } from '../endpoint/thelex';
 
 
@@ -28,6 +29,11 @@ const initial = {
 
 const Register = () => {
     const [formData, setFormData] = useState<FormProps>(initial);
+    const [show, setShow] = useState(false);
+    
+
+    // handle show
+    const handleClick = () => setShow(!show)
     
     const navigate = useNavigate();
     const toast = useToast();
@@ -44,10 +50,10 @@ const Register = () => {
     const handleCreateAcount = (e:React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         thelex
-        .post(REGISTRATION_ENDPOINT.REGISTER, formData)
+        .post(USER_REGISTRATION_ENDPOINT.REGISTER, formData)
         .then(res => {  
             toast({
-                title: res.statusText,
+                title: 'Success',
                 description: "Registration successful",
                 status: 'success',
                 duration: 4000,
@@ -57,14 +63,15 @@ const Register = () => {
         })
         .catch(function (error) {
             toast({
-                title: error.response.statusText && 'Error',
+                title:'Error',
                 description: "whopps something went wrong!!!",
                 status: 'error',
                 duration: 4000,
                 isClosable: true,
               })
           });
-          
+
+          //testing
         //   navigate('/accountverification', {state: formData})
     }
 
@@ -123,13 +130,24 @@ const Register = () => {
                                 onChange={handleOnchange}
                                 />
                             </FormControl>
-
+                            
                             <FormControl w={['90%','90%','60%','60%']} isRequired>
-                                <FormLabel>Password</FormLabel>
-                                <Input type={'password'} placeholder='password' name='password'
-                                value={formData.password}
-                                onChange={handleOnchange}
-                                />
+                                    <FormLabel>password</FormLabel>
+                                    <InputGroup size='md' >
+                                    <Input
+                                        pr='4.5rem'
+                                        type={show ? 'text' : 'password'}
+                                        placeholder='Enter password'
+                                        name='password'
+                                        value={formData.password}
+                                        onChange={handleOnchange}
+                                    />
+                                    <InputRightElement>
+                                        <Text cursor={'pointer'} onClick={handleClick} >
+                                            {show ? <AiOutlineEye size={'1.2rem'} /> : <AiOutlineEyeInvisible size={'1.2rem'} />}
+                                        </Text>                                   
+                                    </InputRightElement>
+                                </InputGroup>
                             </FormControl>
                             
                             <Checkbox type={'checkbox'} required

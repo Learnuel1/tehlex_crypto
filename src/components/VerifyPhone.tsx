@@ -1,30 +1,54 @@
-import { Box, Button, Grid, GridItem, Heading, HStack, PinInput, PinInputField, Stack, Text } from '@chakra-ui/react';
-import React, { useState } from 'react';
+import { Box, Button, Grid, GridItem, Heading, HStack, PinInput, PinInputField, Stack, Text, useToast } from '@chakra-ui/react';
+import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import axios from 'axios'
-import { VerifyOtp } from './Api';
+import { thelex } from '../endpoint/thelex';
+import { USER_REGISTRATION_ENDPOINT } from '../endpoint/route';
 
 const VerifyPhone = () => {
     const location = useLocation();
     const [otp, setOtp] = useState();
-    console.log(otp);
+    const toast = useToast();
     const navigate = useNavigate();
 
-    
+ 
+
     // handle confirm otp
     const handleConfirm = (e:React.FormEvent) => {
         e.preventDefault();
-        axios
-        .post(VerifyOtp, otp)
-        .then(function (response) {
-            console.log(response);
-            // navigate('/feedback')
+        thelex
+        .post( USER_REGISTRATION_ENDPOINT.VERIFY_OTP , {'otp': otp})
+        .then((res) => {
+            toast({
+                title: res.statusText,
+                description: "Registration Completed Successfully",
+                status: 'success',
+                duration: 4000,
+                isClosable: true,
+              });
+            navigate('/feedback');
           })
-          .catch(function (error) {
-            alert(error);
+          .catch((error) => {
+            toast({
+                title: 'wrong otp',
+                description: "Confirm Otp",
+                status: 'error',
+                duration: 4000,
+                isClosable: true,
+              })
           });
-        navigate('/feedback')
     };
+        // handle resendOtp
+    const OtpResend = () => {
+        thelex
+        .post( USER_REGISTRATION_ENDPOINT.VERIFY_OTP , {'otp': otp})
+    };
+
+    // protecting route
+    useEffect(() => {
+        if(!location.state){
+            navigate('/register')
+        }
+    },[]);
 
   return (
     <section>

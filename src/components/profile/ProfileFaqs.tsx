@@ -1,12 +1,19 @@
 import { Heading, Text, VStack, Box, Accordion, AccordionButton, AccordionIcon, AccordionItem, AccordionPanel } from '@chakra-ui/react'
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { IoIosArrowRoundBack } from 'react-icons/io'
+import { Link, useNavigate } from 'react-router-dom'
 
-const Faqs = () => {
+const ProfileFaqs = () => {
+    const navigate = useNavigate();
   return (
    <section>
         <Box maxW={'100vw'} h='100vh' p='2rem' >
-            <VStack m={'2rem'}>
+            <Text>
+                <IoIosArrowRoundBack size={'2.5rem'} color='blue' 
+                    onClick={() =>navigate(-1) }
+                />  
+            </Text>
+            <VStack m={'2rem'} gap='2rem'>
                 <Text color={'blue'}>
                     FREQUENTLY ASKED QUESTIONS
                 </Text>
@@ -14,13 +21,14 @@ const Faqs = () => {
                 Curious about what’ and How’ your user <br/> experience works
                 </Heading>
             </VStack>
+
                 {/* accordion */}
-             <Accordion allowToggle w={['90%','90%','70%','70%']} mx='auto' mt='1rem'  gap={'2rem'}>
-                <AccordionItem>
+             <Accordion allowToggle w={['90%']} mx='auto' my='2rem'  gap={'3rem'}>
+                <AccordionItem my={'2rem'}>
                     <h2>
                     <AccordionButton>
                         <Box as="span" flex='1' textAlign='left'>
-                        How long do payouts take?
+                        How do i sign up on tehlex account?
                         </Box>
                         <AccordionIcon />
                     </AccordionButton>
@@ -33,7 +41,7 @@ const Faqs = () => {
                     </AccordionPanel>
                 </AccordionItem>
 
-                <AccordionItem>
+                <AccordionItem my={'2rem'}>
                     <h2>
                     <AccordionButton>
                         <Box as="span" flex='1' textAlign='left'>
@@ -50,7 +58,7 @@ const Faqs = () => {
                     </AccordionPanel>
                 </AccordionItem>
 
-                <AccordionItem>
+                <AccordionItem my={'2rem'}>
                     <h2>
                     <AccordionButton>
                         <Box as="span" flex='1' textAlign='left'>
@@ -67,7 +75,7 @@ const Faqs = () => {
                     </AccordionPanel>
                 </AccordionItem>
 
-                <AccordionItem>
+                <AccordionItem my={'2rem'}>
                     <h2>
                     <AccordionButton>
                         <Box as="span" flex='1' textAlign='left'>
@@ -84,7 +92,7 @@ const Faqs = () => {
                     </AccordionPanel>
                 </AccordionItem>
 
-                <AccordionItem>
+                <AccordionItem my={'2rem'}>
                     <h2>
                     <AccordionButton>
                         <Box as="span" flex='1' textAlign='left'>
@@ -101,7 +109,7 @@ const Faqs = () => {
                     </AccordionPanel>
                 </AccordionItem>
 
-                <AccordionItem>
+                <AccordionItem my={'2rem'}>
                     <h2>
                     <AccordionButton>
                         <Box as="span" flex='1' textAlign='left'>
@@ -124,4 +132,4 @@ const Faqs = () => {
   )
 }
 
-export default Faqs
+export default ProfileFaqs

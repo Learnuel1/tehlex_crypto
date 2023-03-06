@@ -1,7 +1,7 @@
-import { Box, Button, Grid, GridItem, Heading, HStack, PinInput, PinInputField, Stack, Text, useToast } from '@chakra-ui/react';
-import React, { useState } from 'react';
+import { Box, Button, color, Grid, GridItem, Heading, HStack, Link, PinInput, PinInputField, Stack, Text, textDecoration, useToast } from '@chakra-ui/react';
+import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { REGISTRATION_ENDPOINT } from '../endpoint/route';
+import { USER_REGISTRATION_ENDPOINT } from '../endpoint/route';
 import { thelex } from '../endpoint/thelex';
 
 
@@ -9,7 +9,6 @@ import { thelex } from '../endpoint/thelex';
 const VerifyEmail = () => {
     const location = useLocation();
     const [otp, setOtp] = useState();
-    // console.log(otp);
     const toast = useToast();
     const navigate = useNavigate();
 
@@ -17,7 +16,7 @@ const VerifyEmail = () => {
     const handleConfirm = (e:React.FormEvent) => {
         e.preventDefault();
         thelex
-        .post( REGISTRATION_ENDPOINT.VERIFY_OTP , {'otp': otp})
+        .post( USER_REGISTRATION_ENDPOINT.VERIFY_OTP , {'otp': otp})
         .then((res) => {
             toast({
                 title: res.statusText,
@@ -31,13 +30,29 @@ const VerifyEmail = () => {
           .catch((error) => {
             toast({
                 title: 'wrong otp',
-                description: "Registration Not Completed Successfully",
+                description: "Check again",
                 status: 'error',
                 duration: 4000,
                 isClosable: true,
               })
           });
+
+          //testing
+        //   navigate('/feedback');
     };
+
+        // resend otp
+    const OtpResend = () => {
+        thelex
+        .post( USER_REGISTRATION_ENDPOINT.VERIFY_OTP , {'otp': otp})
+    }
+     
+    // protecting route
+    useEffect(() => {
+        if(!location.state){
+            navigate('/register')
+        }
+    },[]);
 
   return (
     <section>
@@ -54,6 +69,9 @@ const VerifyEmail = () => {
                 <Text>
                     Enter 4 digit code sent to <span style={{color:'blue'}}>{location.state}</span>
                 </Text>
+                    <Text cursor={'pointer'} color='red.300' onClick={OtpResend}>
+                       Resend Otp
+                    </Text>
                 </Stack>
             </GridItem>
             
@@ -62,12 +80,13 @@ const VerifyEmail = () => {
                 <Stack spacing={'4rem'}>
                         <HStack spacing={'1rem'}> 
                             <PinInput  otp type='number' 
-                            onChange={(e:any) => setOtp(e) }
+                            onChange={(e:any) => setOtp(e) } 
+                            value={otp}                          
                             >
-                                <PinInputField required />
-                                <PinInputField required />
-                                <PinInputField required />
-                                <PinInputField required />
+                                <PinInputField value={otp} required />
+                                <PinInputField value={otp} required />
+                                <PinInputField value={otp} required />
+                                <PinInputField value={otp} required />
                             </PinInput>
                         </HStack>
 
