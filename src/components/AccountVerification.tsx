@@ -1,48 +1,50 @@
 import { Box, Button, Grid, GridItem, Heading, Stack, Text, useToast } from '@chakra-ui/react';
 import { useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { REGISTRATION_ENDPOINT } from '../endpoint/route';
+import { USER_REGISTRATION_ENDPOINT } from '../endpoint/route';
 import { thelex } from '../endpoint/thelex';
 
 
-export default function AccountVerification() {
+ function AccountVerification() {
     const location = useLocation();
     const navigate = useNavigate();
     const toast = useToast();
 
     const mail = location.state.email;
+    console.log(location)
     const phone = location.state.phone;
 
+
     // handle verify
-    const handleVerify = (type:string) => {
-        if(type ==='email'){           
+    const handleVerify = () => {
+        if(mail){           
             // post to email endpoint
             thelex
-            .post(REGISTRATION_ENDPOINT.SENT_OTP, {email: mail})
+            .post(USER_REGISTRATION_ENDPOINT.SENT_OTP, {email: mail})
             .then(res => {
                 toast({
-                    title: res.statusText,
+                    title: 'Success',
                     description: "OTP Sent Successfully",
                     status: 'success',
                     duration: 4000,
                     isClosable: true,
                   })
-            navigate('/verifyEmail', {state: mail})
+            navigate('/verifyEmail', {state: location})
             })
             .catch( (error) => {
                 toast({
-                    title: error.response.statusText,
+                    title: 'Error',
                     description: "verification error",
                     status: 'error',
                     duration: 4000,
                     isClosable: true,
                   })
             });
-        } else if(type === 'phone'){
+        } else if(phone){
 
             // post to phone number
             thelex
-            .post(REGISTRATION_ENDPOINT.VERIFY_OTP, {phone: phone} )
+            .post(USER_REGISTRATION_ENDPOINT.VERIFY_OTP, {phone: phone} )
             .then(res => {
                 toast({
                     title: res.statusText,
@@ -62,8 +64,10 @@ export default function AccountVerification() {
                     isClosable: true,
                   })
             });
-        }
+        }  
         
+        // testing
+        // navigate('/verifyEmail', {state: mail})
     };
     
     // protecting route
@@ -85,7 +89,7 @@ export default function AccountVerification() {
                         Account Verification
                     </Heading>
 
-                    <Text>
+                    <Text color={'red.200'}> 
                         Choose how you would like to verify <br/> your account
                     </Text>
                     </Stack>
@@ -94,13 +98,13 @@ export default function AccountVerification() {
                 <GridItem colSpan={[2,2,1,1]}>
                     <Stack spacing={'2rem'} >
                         <Button
-                       onClick={() => handleVerify('email')}
+                       onClick={ handleVerify}
                         >
                             Via Email Address
                         </Button>
 
                         <Button disabled
-                        // onClick={() => handleVerify('phone')}
+                        onClick={ handleVerify}
                         >
                             Via Phone Number
                         </Button>
@@ -112,5 +116,7 @@ export default function AccountVerification() {
     </section>
   )
 }
+
+export default AccountVerification;
 
 

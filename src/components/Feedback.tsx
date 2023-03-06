@@ -34,7 +34,7 @@ const Feedback = () => {
                 </HStack>
 
                 <Text color={'blue'} textDecoration='underline'>
-                    <Link to={'/'}>Continue with webapp</Link>
+                    <Link to={'/login'}>Login to continue</Link>
                 </Text>
             </VStack>
             

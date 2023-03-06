@@ -1,5 +1,5 @@
 
-export const REGISTRATION_ENDPOINT = {
+export const USER_REGISTRATION_ENDPOINT = {
     REGISTER: '/auth/register',
     SENT_OTP: '/auth/verify',
     VERIFY_OTP: '/auth/create'

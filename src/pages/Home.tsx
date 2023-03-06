@@ -36,13 +36,14 @@ const Home = () => {
               </VStack>
 
               <HStack display={['none', 'none', 'flex', 'flex']} justify={'space-around'} mt='2rem'>
-              <Button w='50%' bg='white' color={'black'}
+                {/* button for large screen */}
+              <Button  bg='blue.900' color={'white'}
                 onClick={()=> navigate('/login') }
                >
                       Start Trading
               </Button>
 
-              <Button w='50%' bg='white' color={'black'}
+              <Button  bg='white' color={'black'} colorScheme='none'
                 onClick={()=> navigate('/register') }
                >
                     Join now
@@ -57,16 +58,16 @@ const Home = () => {
             </GridItem>
           </Grid>   
 
-            {/* Buttons under home page */}
+            {/* Buttons for small screen under home page */}
 
           <VStack mt='1rem' gap='1rem' display={['flex', 'flex','none', 'none']}>
-               <Button w='50%' bg='white' color={'black'}
+               <Button  bg='blue.900' color={'white'}
                 onClick={()=> navigate('/login') }
                >
                       Start Trading
               </Button>
 
-              <Button w='50%' bg='white' color={'black'}
+              <Button  bg='white' color={'black'} 
                 onClick={()=> navigate('/register') }
                >
                     Join now
