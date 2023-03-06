@@ -1,7 +1,7 @@
 import { Box,  Flex, Grid, GridItem, Heading, Image, List, ListIcon, ListItem, Stack, Text, } from '@chakra-ui/react'
 import { IoIosArrowRoundBack } from "react-icons/io";
 import { Link, useNavigate } from 'react-router-dom';
-import earnpoint from "../../assets/images/trade_and_earn.jpg"
+import earnpoint from "../../assets/images/tradeandearn.png"
 
 const DashHome = () => {
     const navigate = useNavigate();
