@@ -1,7 +1,7 @@
 import { Box, Button, HStack, Stack, VStack, Text, Image, Heading } from '@chakra-ui/react'
 import { IoIosArrowRoundBack } from 'react-icons/io'
 import { useNavigate } from 'react-router-dom';
-import usdt from '../../assets/images/usdt.png'
+import usdt from '../../assets/images/usdt.jpg'
 
 const WalletAddress = () => {
     const navigate = useNavigate();
