@@ -1,8 +1,8 @@
 import { Box, Heading, HStack, Image, Text, VStack } from '@chakra-ui/react'
 import { IoIosArrowRoundBack } from "react-icons/io";
 import { Link, useNavigate } from 'react-router-dom';
-import naira from '../../assets/images/naira.png';
-import usdt from '../../assets/images/usdt.png';
+import naira from '../../assets/images/naira.jpg';
+import usdt from '../../assets/images/usdt.jpg';
 
 const Withdrawal = () => {
     const navigate = useNavigate();
