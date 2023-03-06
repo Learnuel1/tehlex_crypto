@@ -1,4 +1,4 @@
-import { Box, Button, Heading, HStack, Stack, Text, VStack } from '@chakra-ui/react'
+import { Box, Button, Heading, HStack,  Text, VStack } from '@chakra-ui/react'
 import { IoIosArrowRoundBack } from "react-icons/io";
 import { useNavigate } from 'react-router-dom';
 
