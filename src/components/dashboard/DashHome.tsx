@@ -1,7 +1,7 @@
 import { Box,  Flex, Grid, GridItem, Heading, Image, List, ListIcon, ListItem, Stack, Text, } from '@chakra-ui/react'
 import { IoIosArrowRoundBack } from "react-icons/io";
 import { Link, useNavigate } from 'react-router-dom';
-import earnpoint from '../../assets/images/tradeandearn.png'
+import earnpoint from "../../assets/images/tradeandearn.png"
 
 const DashHome = () => {
     const navigate = useNavigate();
@@ -84,7 +84,7 @@ const DashHome = () => {
 
          {/*Earn point  */}
          <Flex justify={'space-around'} gap={['.5rem','.5rem','1rem']} mt={'2rem'} bg={'#ECF0FF'} p='1rem'>
-            <Image alt='tradeandearn' src={earnpoint} w={['100px','100px','200px']} h={['130px','120px','fit-content']} />
+            <Image alt='trade_and_earn' src={earnpoint} w={['100px','100px','200px']} h={['130px','120px','fit-content']} />
             <Stack gap={[0,0,2]} mt={[0, 0,'2rem']} >
                 <Heading size={['sm','sm','lg']}>Earn points on every trades</Heading>
                 <Text textAlign={'left'} fontSize='14px'>
