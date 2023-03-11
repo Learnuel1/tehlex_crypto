@@ -1,23 +1,52 @@
-import { Box, Button, FormControl, FormLabel, Grid, GridItem, Heading,   Input,  InputGroup,  InputRightElement,  Stack, Text } from '@chakra-ui/react';
+import { Box, Button, FormControl, FormLabel, Grid, GridItem, Heading,   Input,  InputGroup,  InputRightElement,  Stack, Text, useToast } from '@chakra-ui/react';
 import React, { useState } from 'react';
 import { IoIosArrowRoundBack } from "react-icons/io";
 import { useNavigate } from 'react-router-dom';
 import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai";
+import { thelex } from '../endpoint/thelex';
+import { PASSWORD_RECOVERY } from '../endpoint/route';
 
 const NewPassword = () => {
-    const [password, setPassword] = useState<string>('');
+    const [newPassword, setNewPassword] = useState<string>('');
     const [confirmPassword, setConfirmPassword] = useState<string>('');
     const navigate = useNavigate();
-    console.log(password, confirmPassword);
+    console.log(newPassword, confirmPassword);
     const [show, setShow] = useState(false)
-    const handleClick = () => setShow(!show)
+    const handleClick = () => setShow(!show);
+    const toast = useToast();
 
 
-    // handle confirm password
+   
+     // handle confirm password
     const handleConfrim = (e:React.FormEvent) => {
         e.preventDefault();
-        navigate("/login")
-    }
+         thelex.patch(PASSWORD_RECOVERY.RESET_PASSWORD, 
+            {
+                currentPassword: newPassword,
+                newPassword: confirmPassword,
+            } )
+        .then(res => {
+            toast({
+                title: 'Password reset successfu',
+                description: "Login with your new password",
+                status: 'success',
+                duration: 8000,
+                isClosable: true,
+              })
+              navigate("/login")
+        })
+        .catch(function (error) {
+            toast({
+                title:'Error',
+                description: "password reset not successful",
+                status: 'error',
+                duration: 4000,
+                isClosable: true,
+              })
+            //   navigate("/login")
+          });
+    };
+
     
   return (
     <section>
@@ -50,8 +79,8 @@ const NewPassword = () => {
                                     <Input  type={show ? 'text' : 'password'}
                                          placeholder='New Password'
                                         name='password'
-                                        value={password}
-                                        onChange={(e) => setPassword(e.target.value)}
+                                        value={newPassword}
+                                        onChange={(e) => setNewPassword(e.target.value)}
                                     />
                                 </FormControl>                                
 

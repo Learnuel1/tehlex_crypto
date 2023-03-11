@@ -1,6 +1,6 @@
  const config = {
-    API: () => "https://hr-mgt.onrender.com",
-    LOCAL_API: () => "http://localhost:5000/api/v1"
+    API: () => "https://tehlex.onrender.com/api/v1",
+    LOCAL_API: () => "http://localhost:4000/api/v1"
 }
 
 export const getConfig = () => {    

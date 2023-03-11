@@ -30,13 +30,12 @@ const initial = {
 const Register = () => {
     const [formData, setFormData] = useState<FormProps>(initial);
     const [show, setShow] = useState(false);
+    const navigate = useNavigate();
+    const toast = useToast();
     
 
     // handle show
     const handleClick = () => setShow(!show)
-    
-    const navigate = useNavigate();
-    const toast = useToast();
 
     //handle onchange
     const handleOnchange = (e:React.FormEvent) => {
@@ -61,7 +60,7 @@ const Register = () => {
               })
         navigate('/accountverification', {state: formData})
         })
-        .catch(function (error) {
+        .catch(() => {
             toast({
                 title:'Error',
                 description: "whopps something went wrong!!!",
@@ -69,10 +68,8 @@ const Register = () => {
                 duration: 4000,
                 isClosable: true,
               })
-          });
-
-          //testing
         //   navigate('/accountverification', {state: formData})
+        })           
     }
 
   return (

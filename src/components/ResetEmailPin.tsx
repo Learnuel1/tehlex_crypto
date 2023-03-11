@@ -1,19 +1,44 @@
-import { Box, Button, Grid, GridItem, Heading, HStack,  PinInput, PinInputField, Stack, Text } from '@chakra-ui/react';
+import { Box, Button, Grid, GridItem, Heading, HStack,  PinInput, PinInputField, Stack, Text, useToast } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
 import { IoIosArrowRoundBack } from "react-icons/io";
 import { useLocation, useNavigate } from 'react-router-dom';
+import { PASSWORD_RECOVERY } from '../endpoint/route';
+import { thelex } from '../endpoint/thelex';
 
 
 const ResetEmailPin = () => {
     const [otp, setOtp] = useState()
     const navigate = useNavigate();
     const location = useLocation();
+    const toast = useToast();
 
     // const handle verify otp
     const handleVerifyOtp = (e:React.FormEvent) => {
         e.preventDefault();
-        navigate("/newpassword")     
+         thelex.get(PASSWORD_RECOVERY.VERIFY_PASSWORD_RESET )
+        .then(res => {
+            toast({
+                title: 'Success',
+                description: "Otp verification successfull",
+                status: 'success',
+                duration: 4000,
+                isClosable: true,
+              })
+              navigate("/newpassword")  
+        })
+        .catch(function (error) {
+            toast({
+                title:'Error!!!, Check again',
+                description: "invalid Otp",
+                status: 'error',
+                duration: 4000,
+                isClosable: true,
+              })
+            //   navigate("/newpassword") 
+          });
     };
+
+
 
     //protecting route
     useEffect(() => {
