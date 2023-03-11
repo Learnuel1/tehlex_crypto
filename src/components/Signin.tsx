@@ -36,7 +36,7 @@ const Signin = () => {
         .catch(function (error) {
             toast({
                 title:'Error',
-                description: "whopps something went wrong!!!",
+                description: "Check username and password",
                 status: 'error',
                 duration: 4000,
                 isClosable: true,
