@@ -31,7 +31,7 @@ const Signin = () => {
                 duration: 4000,
                 isClosable: true,
               })
-        navigate('/')
+        navigate('/dashboard')
         })
         .catch(function (error) {
             toast({
