@@ -81,8 +81,9 @@ import { thelex } from '../endpoint/thelex';
     const handleVerifys = (e:React.FormEvent) => {
         e.preventDefault();
         thelex
-            .post(USER_REGISTRATION_ENDPOINT.SENT_OTP, {email: email})
+            .post(USER_REGISTRATION_ENDPOINT.SENT_OTP(), {email: email})
             .then(res => {
+                console.log(res)
                 toast({
                     title: 'Success',
                     description: "OTP Sent Successfully",

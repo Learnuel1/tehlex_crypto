@@ -10,7 +10,7 @@ const Navigation = () => {
              px='1rem' boxShadow={'dark-lg'} >
             <Flex w='100%' alignItems={'center'} justify='left' >                
                 <NavLink to={'/'} style={({isActive}) => isActive? {color:'blue'}: {color:'black'}} >
-                     <Image alt='logo' src={logo} w={'150px'}  />
+                     <Image alt='logo' src={logo} w={'150px'}   />
                 </NavLink>
             </Flex>
 
