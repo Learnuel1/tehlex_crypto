@@ -38,13 +38,13 @@ const VerifyEmail = () => {
           });
 
           //testing
-        //   navigate('/feedback');
+          navigate('/feedback');
     };
 
         // resend otp
     const OtpResend = () => {
         thelex
-        .post( USER_REGISTRATION_ENDPOINT.VERIFY_OTP , {'otp': otp})
+        .post( USER_REGISTRATION_ENDPOINT.SENT_OTP() , {'otp': otp})
     }
      
     // protecting route
@@ -61,7 +61,7 @@ const VerifyEmail = () => {
 
         <Grid templateColumns='repeat(2, 1fr)' gap={'2rem'} >
             <GridItem colSpan={[2,2,1,1]}>
-                <Stack spacing={'2rem'}>
+                <Stack gap={'2rem'}>
                 <Heading size={['lg']}>
                  Verify Email Address
                 </Heading>
@@ -69,16 +69,14 @@ const VerifyEmail = () => {
                 <Text>
                     Enter 4 digit code sent to <span style={{color:'blue'}}>{location.state}</span>
                 </Text>
-                    <Text cursor={'pointer'} color='red.300' onClick={OtpResend}>
-                       Resend Otp
-                    </Text>
+                   
                 </Stack>
             </GridItem>
             
             <GridItem colSpan={[2,2,1,1]}>
                <form onSubmit={handleConfirm}>
-                <Stack spacing={'4rem'}>
-                        <HStack spacing={'1rem'}> 
+                <Stack gap={'2rem'}>
+                        <HStack gap={'1rem'}> 
                             <PinInput  otp type='number' 
                             onChange={(e:any) => setOtp(e) } 
                             value={otp}                          
@@ -94,6 +92,13 @@ const VerifyEmail = () => {
                         Confirm
                     </Button>
                     </Stack>
+
+                    <Box mt={'2rem'}>
+                        <Button cursor={'pointer'} _hover={{color:'blue'}} 
+                        color='red.300' onClick={OtpResend} colorScheme='none' border={'none'}>
+                        Resend Otp
+                        </Button>
+                    </Box>
                </form>
             </GridItem>
 

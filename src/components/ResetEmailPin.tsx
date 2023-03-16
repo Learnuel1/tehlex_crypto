@@ -15,7 +15,7 @@ const ResetEmailPin = () => {
     // const handle verify otp
     const handleVerifyOtp = (e:React.FormEvent) => {
         e.preventDefault();
-         thelex.get(PASSWORD_RECOVERY.VERIFY_PASSWORD_RESET )
+         thelex.get(PASSWORD_RECOVERY.VERIFY_PASSWORD_RESET, {params: {id: otp}} )
         .then(res => {
             toast({
                 title: 'Success',

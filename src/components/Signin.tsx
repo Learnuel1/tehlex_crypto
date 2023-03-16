@@ -13,13 +13,15 @@ const Signin = () => {
     const navigate = useNavigate();
     const toast = useToast();
     const [show, setShow] = useState(false)
+
+    // handle show password 
     const handleClick = () => setShow(!show)
 
 
     // handle submit
     const handleSubmit =async (e:React.FormEvent) => {
         e.preventDefault();
-        thelex.post(LOGIN_ENDPOINT.LOGIN, {
+      await  thelex.post(LOGIN_ENDPOINT.LOGIN, {
             username: userName,
             password: password,
         } )
@@ -33,7 +35,7 @@ const Signin = () => {
               })
         navigate('/dashboard')
         })
-        .catch(function (error) {
+        .catch(function () {
             toast({
                 title:'Error',
                 description: "Check username and password",
@@ -42,22 +44,22 @@ const Signin = () => {
                 isClosable: true,
               })
           });
-
+          navigate('/dashboard')
     }
       
 
   return (
     <section>
-        <Box maxW={'100vw'} p='3rem'>
-            <Grid templateColumns='repeat(2, 1fr)'>
-                <GridItem colSpan={[2,2,1,1]} >                   
+        <Box maxW={'100vw'}  p='3rem'>
+            <Grid templateColumns='repeat(2, 1fr)' gap={[0, 0, '2rem']}>
+                <GridItem colSpan={[2,2,1,1]}  >                   
                     <VStack>
-                        <Text mb={'1rem'}>Sign in</Text>
+                        <Text mb={'1rem'} fontWeight='bold' color={'blue'} >Sign in</Text>
                         <Image alt='signin_img' src={signin} loading='lazy' w='350px' />
                     </VStack>
                 </GridItem>
 
-                <GridItem colSpan={[2,2,1,1]} > 
+                <GridItem colSpan={[2,2,1,1]}  > 
                     <Stack mt='2rem'>
                         <Image alt='signin_logo' src={signin_logo} w='60px' loading='lazy' ml={'4rem'} />
                         <Heading size={'lg'}>
