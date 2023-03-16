@@ -38,7 +38,7 @@ const VerifyEmail = () => {
           });
 
           //testing
-          navigate('/feedback');
+        //   navigate('/feedback');
     };
 
         // resend otp

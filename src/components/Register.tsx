@@ -68,7 +68,7 @@ const Register = () => {
                 duration: 4000,
                 isClosable: true,
               })
-          navigate('/accountverification', {state: formData})
+        //   navigate('/accountverification', {state: formData})
         })           
     }
 

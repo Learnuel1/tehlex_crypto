@@ -67,7 +67,7 @@ import { thelex } from '../endpoint/thelex';
         }  
         
         // testing
-        navigate('/verifyEmail', {state: mail})
+        // navigate('/verifyEmail', {state: mail})
     };
     
    // protecting route
