@@ -27,7 +27,7 @@ const NewPassword = () => {
             } )
         .then(res => {
             toast({
-                title: 'Password reset successfu',
+                title: 'Password reset successful',
                 description: "Login with your new password",
                 status: 'success',
                 duration: 8000,

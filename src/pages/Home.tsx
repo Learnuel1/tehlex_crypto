@@ -1,4 +1,4 @@
-import { Box, Grid, GridItem, VStack, Image, Stack, Text, Heading, HStack, Button } from '@chakra-ui/react'
+import { Box, Grid, GridItem, VStack, Image,  Text, Heading, HStack, Button } from '@chakra-ui/react'
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import brand_img from '../assets/images/home_img.png'
@@ -37,23 +37,22 @@ const Home = () => {
 
               <HStack display={['none', 'none', 'flex', 'flex']} justify={'space-around'} mt='2rem'>
                 {/* button for large screen */}
-              <Button  bg='blue.900' color={'white'}
+              <Button size={'lg'}   colorScheme={'blue'} bg='blue.800'
                 onClick={()=> navigate('/login') }
                >
                       Start Trading
               </Button>
-
-              <Button  bg='white' color={'black'} colorScheme='none'
-                onClick={()=> navigate('/register') }
+              <Button size={'lg'}  colorScheme={'whiteAlpha'} color={'black'} bg='white'
+                onClick={()=> navigate('/register') }  
                >
-                    Join now
+                    Join Now
               </Button>
                 </HStack>
             </GridItem>
 
             <GridItem colSpan={[2,2,1,1]}>
-              <VStack mt={'2rem'}>
-                <Image alt='brand_img'  src={brand_img} w='500px'  />
+              <VStack mt={['2rem', '2rem','8rem', '4rem']}>
+                <Image alt='brand_img'  src={brand_img} w='400px'  />
               </VStack>
             </GridItem>
           </Grid>   
@@ -61,16 +60,16 @@ const Home = () => {
             {/* Buttons for small screen under home page */}
 
           <VStack mt='1rem' gap='1rem' display={['flex', 'flex','none', 'none']}>
-               <Button  bg='blue.900' color={'white'}
-                onClick={()=> navigate('/login') }
+               <Button colorScheme={'blue'} bg='blue.800'
+                onClick={()=> navigate('/login') } size={'lg'} 
                >
                       Start Trading
               </Button>
 
-              <Button  bg='white' color={'black'} 
-                onClick={()=> navigate('/register') }
+              <Button size={'lg'}  colorScheme={'whiteAlpha'} color={'black'} bg='white'
+                onClick={()=> navigate('/register') }  
                >
-                    Join now
+                    Join Now
               </Button>
           </VStack>
 

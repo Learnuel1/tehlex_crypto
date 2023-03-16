@@ -46,9 +46,9 @@ const Register = () => {
     } ;
 
     // handle create account
-    const handleCreateAcount = (e:React.FormEvent<HTMLFormElement>) => {
+    const handleCreateAcount = async (e:React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        thelex
+       await thelex
         .post(USER_REGISTRATION_ENDPOINT.REGISTER, formData)
         .then(res => {  
             toast({
@@ -58,7 +58,7 @@ const Register = () => {
                 duration: 4000,
                 isClosable: true,
               })
-        navigate('/accountverification', {state: formData})
+            navigate('/accountverification', {state: formData})
         })
         .catch(() => {
             toast({
@@ -75,9 +75,9 @@ const Register = () => {
   return (
     <section>
     <Box maxW={'100vw'} p='3rem'>
-        <Grid templateColumns='repeat(2, 1fr)'>
+        <Grid templateColumns='repeat(2, 1fr)' gap={[0, 0, '2rem']}>
             <GridItem colSpan={[2,2,1,1]} >                   
-                <VStack>
+                <VStack mt={[0, 0,'4rem','4rem']}>
                     <Text mb={'1rem'}>Register</Text>
                     <Image alt='signin_img' src={register} loading='lazy' w='350px' />
                 </VStack>

@@ -8,14 +8,14 @@ import 'react-alice-carousel/lib/alice-carousel.css';
 
 const responsive = {
     0: { items: 2 },
-    568: { items: 2 },
-    1024: { items: 4 },
+    568: { items: 3 },
+    1024: { items: 6 },
   };
 
   const items = [
     <div className="item" data-value="1">
-        <Stack bg={'white'} pb='.5rem' w='200px' >
-            <Image alt='our_team' src={team} w='200px' loading='lazy' />
+        <Stack bg={'white'} pb='.5rem'  w='200px' >
+            <Image alt='our_team' src={team} w='200px'  loading='lazy' />
             <Text fontWeight={'bold'} px='.5rem'>Vincent Onwudiwe</Text>
             <Text px='.5rem'>Project Manager/CEO</Text>
         </Stack>
@@ -49,7 +49,7 @@ const AboutUs = () => {
         <Image alt='about_us' src={about} loading='lazy' w='fit-content' h={['200px','210px','fit-content']} p='1rem' mt={'1rem'} />
         <Box  maxW='100vw' >
             <Stack ml={['1rem','1rem','2rem','2rem']} color='blue' fontSize={'.8rem'}>            
-                <Text>
+                <Text ml='2rem' fontSize={'1rem'}>
                     <Link to={'/'}>
                         Check out our Gallery
                     </Link>
@@ -94,7 +94,7 @@ const AboutUs = () => {
 
             {/* our team */}
 
-            <Box w='90vw' mx='auto'>
+            <Box w={'90vw'} mx='auto' >
             <AliceCarousel
                 mouseTracking
                 items={items}
