@@ -44,7 +44,7 @@ const VerifyEmail = () => {
         // resend otp
     const OtpResend = () => {
         thelex
-        .post( USER_REGISTRATION_ENDPOINT.SENT_OTP() , {'otp': otp})
+        .post( USER_REGISTRATION_ENDPOINT.SENT_OTP , {'otp': otp})
     }
      
     // protecting route

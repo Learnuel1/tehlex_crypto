@@ -32,6 +32,7 @@ const Register = () => {
     const [show, setShow] = useState(false);
     const navigate = useNavigate();
     const toast = useToast();
+    console.log(formData)
     
 
     // handle show
@@ -115,7 +116,7 @@ const Register = () => {
                             <FormControl w={['90%','90%','60%','60%']} isRequired>
                                 <FormLabel>Email</FormLabel>
                                 <Input type={'email'} placeholder='Email' name='email' 
-                                value={formData.email}
+                                value={formData.email.toLocaleLowerCase()}
                                 onChange={handleOnchange}
                                 />
                             </FormControl>
