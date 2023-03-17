@@ -14,37 +14,11 @@ import { thelex } from '../endpoint/thelex';
     console.log(mail)
     const phone = location.state.phone;
 
-
-    // handleemail verify
-    const handleEmailVerify = () => {
-        thelex
-            .post((USER_REGISTRATION_ENDPOINT.SENT_OTP) ,{email: mail})
-            .then(res => {
-                toast({
-                    title: res.statusText,
-                    description: "OTP Sent Successfully",
-                    status: 'success',
-                    duration: 4000,
-                    isClosable: true,
-                  })
-            navigate('/verifyEmail', {state: location})
-            })
-            .catch( (error) => {
-                toast({
-                    title: error,
-                    description: "verification error",
-                    status: 'error',
-                    duration: 4000,
-                    isClosable: true,
-                  })
-            });
-    }
-
     //handle verify
     const handleVerify = () => {
         if(mail){           
             thelex
-            .post((USER_REGISTRATION_ENDPOINT.SENT_OTP) ,{email: mail})
+            .post((USER_REGISTRATION_ENDPOINT.SENT_OTP() ) ,{email: mail})
             .then(res => {
                 toast({
                     title: res.statusText,
@@ -68,7 +42,7 @@ import { thelex } from '../endpoint/thelex';
 
             // post to phone number
             thelex
-            .post(USER_REGISTRATION_ENDPOINT.SENT_OTP, {phone: phone} )
+            .post(USER_REGISTRATION_ENDPOINT.SENT_OTP(), {phone: phone} )
             .then(res => {
                 toast({
                     title: res.statusText,
@@ -97,7 +71,7 @@ import { thelex } from '../endpoint/thelex';
    // protecting route
     useEffect(() => {
         if(!location.state){
-            navigate(-1)
+            navigate('/register')
         }
     },[]);
 
@@ -123,7 +97,7 @@ import { thelex } from '../endpoint/thelex';
                 <GridItem colSpan={[2,2,1,1]}>
                     <Stack spacing={'2rem'} >
                          <Button colorScheme={'blue'}
-                        onClick={ handleEmailVerify}
+                        onClick={() => handleVerify()}
                         >
                             Via Email Address
                         </Button>
