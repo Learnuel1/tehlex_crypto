@@ -53,7 +53,7 @@ const Register = () => {
         .post(USER_REGISTRATION_ENDPOINT.REGISTER, formData)
         .then(res => {  
             toast({
-                title: 'Success',
+                title: res.statusText,
                 description: "Registration successful",
                 status: 'success',
                 duration: 4000,
@@ -61,9 +61,9 @@ const Register = () => {
               })
             navigate('/accountverification', {state: formData})
         })
-        .catch(() => {
+        .catch((error) => {
             toast({
-                title:'Error',
+                title:error.response.statusText,
                 description: "whopps something went wrong!!!",
                 status: 'error',
                 duration: 4000,

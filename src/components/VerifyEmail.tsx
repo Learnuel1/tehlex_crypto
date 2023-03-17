@@ -29,7 +29,7 @@ const VerifyEmail = () => {
           })
           .catch((error) => {
             toast({
-                title: 'error',
+                title: error.response.statusText,
                 description: "Check again",
                 status: 'error',
                 duration: 4000,
