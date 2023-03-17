@@ -97,7 +97,7 @@ import { thelex } from '../endpoint/thelex';
                 <GridItem colSpan={[2,2,1,1]}>
                     <Stack spacing={'2rem'} >
                          <Button colorScheme={'blue'}
-                        onClick={() => handleVerify}
+                        onClick={ handleVerify}
                         >
                             Via Email Address
                         </Button>

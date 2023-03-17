@@ -95,7 +95,7 @@ const VerifyEmail = () => {
 
                     <Box mt={'2rem'}>
                         <Button cursor={'pointer'} _hover={{color:'blue'}} 
-                        color='red.300' onClick={() => OtpResend()} colorScheme='none' border={'none'}>
+                        color='red.300' onClick={OtpResend} colorScheme='none' border={'none'}>
                         Resend Otp
                         </Button>
                     </Box>
