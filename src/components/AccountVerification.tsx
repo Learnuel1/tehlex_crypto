@@ -18,7 +18,7 @@ import { thelex } from '../endpoint/thelex';
     const handleVerify =async () => {
         if(mail){           
            await thelex
-            .post((USER_REGISTRATION_ENDPOINT.SENT_OTP ) ,{email: mail})
+            .post(USER_REGISTRATION_ENDPOINT.SENT_OTP ,{email: mail})
             .then(res => {
                 toast({
                     title: res.statusText,
@@ -31,7 +31,7 @@ import { thelex } from '../endpoint/thelex';
             })
             .catch( (error) => {
                 toast({
-                    title: error,
+                    title: error.response.statusText,
                     description: "verification error",
                     status: 'error',
                     duration: 4000,
