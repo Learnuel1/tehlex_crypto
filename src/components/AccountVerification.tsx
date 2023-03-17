@@ -15,14 +15,13 @@ import { thelex } from '../endpoint/thelex';
     const phone = location.state.phone;
 
 
-    //handle verify
-    const handleVerify = () => {
-        if(mail){           
-            thelex
+    // handleemail verify
+    const handleEmailVerify = () => {
+        thelex
             .post((USER_REGISTRATION_ENDPOINT.SENT_OTP) ,{email: mail})
             .then(res => {
                 toast({
-                    title: 'Success',
+                    title: res.statusText,
                     description: "OTP Sent Successfully",
                     status: 'success',
                     duration: 4000,
@@ -32,7 +31,33 @@ import { thelex } from '../endpoint/thelex';
             })
             .catch( (error) => {
                 toast({
-                    title: 'Error',
+                    title: error,
+                    description: "verification error",
+                    status: 'error',
+                    duration: 4000,
+                    isClosable: true,
+                  })
+            });
+    }
+
+    //handle verify
+    const handleVerify = () => {
+        if(mail){           
+            thelex
+            .post((USER_REGISTRATION_ENDPOINT.SENT_OTP) ,{email: mail})
+            .then(res => {
+                toast({
+                    title: res.statusText,
+                    description: "OTP Sent Successfully",
+                    status: 'success',
+                    duration: 4000,
+                    isClosable: true,
+                  })
+            navigate('/verifyEmail', {state: location})
+            })
+            .catch( (error) => {
+                toast({
+                    title: error,
                     description: "verification error",
                     status: 'error',
                     duration: 4000,
@@ -98,7 +123,7 @@ import { thelex } from '../endpoint/thelex';
                 <GridItem colSpan={[2,2,1,1]}>
                     <Stack spacing={'2rem'} >
                          <Button colorScheme={'blue'}
-                        onClick={ handleVerify}
+                        onClick={ handleEmailVerify}
                         >
                             Via Email Address
                         </Button>
