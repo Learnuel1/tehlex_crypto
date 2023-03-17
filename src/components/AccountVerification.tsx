@@ -1,5 +1,5 @@
-import { Box, Button, FormControl, FormLabel, Grid, GridItem, Heading, Input, Stack, Text, useToast, VStack } from '@chakra-ui/react';
-import { useEffect, useState } from 'react';
+import { Box, Button, Grid, GridItem, Heading,  Stack, Text, useToast, } from '@chakra-ui/react';
+import { useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { USER_REGISTRATION_ENDPOINT } from '../endpoint/route';
 import { thelex } from '../endpoint/thelex';
@@ -9,7 +9,6 @@ import { thelex } from '../endpoint/thelex';
     const location = useLocation();
     const navigate = useNavigate();
     const toast = useToast();
-    const [email, setEmail] = useState('')
 
     const mail = location.state.email;
     console.log(mail)
@@ -20,7 +19,7 @@ import { thelex } from '../endpoint/thelex';
     const handleVerify = () => {
         if(mail){           
             thelex
-            .post((USER_REGISTRATION_ENDPOINT.SENT_OTP()) ,{email: mail})
+            .post((USER_REGISTRATION_ENDPOINT.SENT_OTP) ,{email: mail})
             .then(res => {
                 toast({
                     title: 'Success',
@@ -44,7 +43,7 @@ import { thelex } from '../endpoint/thelex';
 
             // post to phone number
             thelex
-            .post(USER_REGISTRATION_ENDPOINT.SENT_OTP(), {phone: phone} )
+            .post(USER_REGISTRATION_ENDPOINT.SENT_OTP, {phone: phone} )
             .then(res => {
                 toast({
                     title: res.statusText,
