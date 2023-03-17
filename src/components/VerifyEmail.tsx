@@ -13,9 +13,9 @@ const VerifyEmail = () => {
     const navigate = useNavigate();
 
     // handle confirm otp
-    const handleConfirm = (e:React.FormEvent) => {
+    const handleConfirm = async (e:React.FormEvent) => {
         e.preventDefault();
-        thelex
+       await thelex
         .post( USER_REGISTRATION_ENDPOINT.VERIFY_OTP , {'otp': otp})
         .then((res) => {
             toast({
@@ -29,7 +29,7 @@ const VerifyEmail = () => {
           })
           .catch((error) => {
             toast({
-                title: 'wrong otp',
+                title: 'error',
                 description: "Check again",
                 status: 'error',
                 duration: 4000,
@@ -44,7 +44,7 @@ const VerifyEmail = () => {
         // resend otp
     const OtpResend = () => {
         thelex
-        .post( USER_REGISTRATION_ENDPOINT.SENT_OTP() , {'otp': otp})
+        .post( USER_REGISTRATION_ENDPOINT.SENT_OTP , {'otp': otp})
     }
      
     // protecting route

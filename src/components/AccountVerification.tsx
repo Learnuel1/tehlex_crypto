@@ -15,10 +15,10 @@ import { thelex } from '../endpoint/thelex';
     const phone = location.state.phone;
 
     //handle verify
-    const handleVerify = () => {
+    const handleVerify =async () => {
         if(mail){           
-            thelex
-            .post((USER_REGISTRATION_ENDPOINT.SENT_OTP() ) ,{email: mail})
+           await thelex
+            .post((USER_REGISTRATION_ENDPOINT.SENT_OTP ) ,{email: mail})
             .then(res => {
                 toast({
                     title: res.statusText,
@@ -41,8 +41,8 @@ import { thelex } from '../endpoint/thelex';
         } else if(phone){
 
             // post to phone number
-            thelex
-            .post(USER_REGISTRATION_ENDPOINT.SENT_OTP(), {phone: phone} )
+            await  thelex
+            .post(USER_REGISTRATION_ENDPOINT.SENT_OTP, {phone: phone} )
             .then(res => {
                 toast({
                     title: res.statusText,
@@ -97,7 +97,7 @@ import { thelex } from '../endpoint/thelex';
                 <GridItem colSpan={[2,2,1,1]}>
                     <Stack spacing={'2rem'} >
                          <Button colorScheme={'blue'}
-                        onClick={() => handleVerify()}
+                        onClick={() => handleVerify}
                         >
                             Via Email Address
                         </Button>
