@@ -32,7 +32,7 @@ const Register = () => {
     const [show, setShow] = useState(false);
     const navigate = useNavigate();
     const toast = useToast();
-    console.log(formData)
+
     
 
     // handle show
