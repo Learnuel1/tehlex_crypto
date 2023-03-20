@@ -36,13 +36,13 @@ const NewPassword = () => {
         })
         .catch(function (error) {
             toast({
-                title: error.res.statusText,
+                title: error.response.statusText,
                 description: "password reset not successful",
                 status: 'error',
                 duration: 4000,
                 isClosable: true,
               })
-              navigate("/login")
+            //   navigate("/login")
           });
     };
 

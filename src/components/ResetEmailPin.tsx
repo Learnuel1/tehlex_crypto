@@ -34,7 +34,7 @@ const ResetEmailPin = () => {
                 duration: 4000,
                 isClosable: true,
               })
-              navigate("/newpassword") 
+            //   navigate("/newpassword") 
           });
     };
 
