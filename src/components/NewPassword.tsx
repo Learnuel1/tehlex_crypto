@@ -36,7 +36,7 @@ const NewPassword = () => {
         })
         .catch(function (error) {
             toast({
-                title: error.response.statusText,
+                title: 'Error',
                 description: "password reset not successful",
                 status: 'error',
                 duration: 4000,
