@@ -15,10 +15,10 @@ const ResetEmailPin = () => {
     // const handle verify otp
     const handleVerifyOtp = (e:React.FormEvent) => {
         e.preventDefault();
-         thelex.get(PASSWORD_RECOVERY.VERIFY_PASSWORD_RESET, {params: {id: otp}} )
+         thelex.get(PASSWORD_RECOVERY.VERIFY_PASSWORD_RESET, {params: {otp: otp}} )
         .then(res => {
             toast({
-                title: 'Success',
+                title: res.statusText,
                 description: "Otp verification successfull",
                 status: 'success',
                 duration: 4000,
@@ -28,13 +28,13 @@ const ResetEmailPin = () => {
         })
         .catch(function (error) {
             toast({
-                title:'Error!!!, Check again',
+                title:error.response.statusText,
                 description: "invalid Otp",
                 status: 'error',
                 duration: 4000,
                 isClosable: true,
               })
-            //   navigate("/newpassword") 
+              navigate("/newpassword") 
           });
     };
 

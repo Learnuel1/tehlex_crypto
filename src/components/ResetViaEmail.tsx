@@ -15,10 +15,10 @@ const ResetViaEmail = () => {
     // handle continue
     const handleContinue = (e:React.FormEvent) => {
         e.preventDefault();
-         thelex.get(PASSWORD_RECOVERY.FORGOT_PASSWORD, {params:{email: email}} )
+         thelex.post(PASSWORD_RECOVERY.RECOVERY_lINK, {email: email})
         .then(res => {
             toast({
-                title: 'Success',
+                title: res.statusText,
                 description: "Email is valid",
                 status: 'success',
                 duration: 4000,
@@ -28,8 +28,8 @@ const ResetViaEmail = () => {
         })
         .catch(function (error) {
             toast({
-                title:'Error',
-                description: "invalid email",
+                title: error.response.statusText,
+                description: "email not found",
                 status: 'error',
                 duration: 4000,
                 isClosable: true,
@@ -60,7 +60,7 @@ const ResetViaEmail = () => {
                    valid email address you used to register
                 </Text>
                 <Input type={'email'} placeholder='valid email' name='email'
-                    value={email}
+                    value={email.toLocaleLowerCase()}
                     onChange={e => setEmail(e.target.value)}
                 />
             </FormControl>
