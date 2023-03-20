@@ -27,7 +27,7 @@ const Signin = () => {
         } )
         .then(res => {  
             toast({
-                title: 'Success',
+                title: res.statusText,
                 description: "Login successful",
                 status: 'success',
                 duration: 4000,
@@ -35,9 +35,9 @@ const Signin = () => {
               })
         navigate('/dashboard')
         })
-        .catch(function () {
+        .catch(function (error) {
             toast({
-                title:'Error',
+                title:error.response.statusText,
                 description: "Check username and password",
                 status: 'error',
                 duration: 4000,

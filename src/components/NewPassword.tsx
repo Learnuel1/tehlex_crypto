@@ -10,7 +10,6 @@ const NewPassword = () => {
     const [newPassword, setNewPassword] = useState<string>('');
     const [confirmPassword, setConfirmPassword] = useState<string>('');
     const navigate = useNavigate();
-    console.log(newPassword, confirmPassword);
     const [show, setShow] = useState(false)
     const handleClick = () => setShow(!show);
     const toast = useToast();
@@ -27,7 +26,7 @@ const NewPassword = () => {
             } )
         .then(res => {
             toast({
-                title: 'Password reset successful',
+                title: 'Password Reset Successful',
                 description: "Login with your new password",
                 status: 'success',
                 duration: 8000,
@@ -37,7 +36,7 @@ const NewPassword = () => {
         })
         .catch(function (error) {
             toast({
-                title:'Error',
+                title: 'Error',
                 description: "password reset not successful",
                 status: 'error',
                 duration: 4000,
