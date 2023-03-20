@@ -8,6 +8,7 @@ import { thelex } from '../endpoint/thelex';
 
 const ResetEmailPin = () => {
     const [otp, setOtp] = useState()
+    console.log(otp)
     const navigate = useNavigate();
     const location = useLocation();
     const toast = useToast();
@@ -15,7 +16,7 @@ const ResetEmailPin = () => {
     // const handle verify otp
     const handleVerifyOtp = (e:React.FormEvent) => {
         e.preventDefault();
-         thelex.get(PASSWORD_RECOVERY.VERIFY_PASSWORD_RESET, {params: {otp: otp}} )
+         thelex.get(PASSWORD_RECOVERY.VERIFY_PASSWORD_RESET,{params:{otp}} )
         .then(res => {
             toast({
                 title: res.statusText,
