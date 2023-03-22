@@ -29,7 +29,7 @@ const NewPassword = () => {
                 title: 'Password Reset Successful',
                 description: "Login with your new password",
                 status: 'success',
-                duration: 8000,
+                duration: 5000,
                 isClosable: true,
               })
               navigate("/login")

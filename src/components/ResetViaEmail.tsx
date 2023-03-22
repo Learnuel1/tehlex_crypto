@@ -17,6 +17,8 @@ const ResetViaEmail = () => {
         e.preventDefault();
          thelex.post(PASSWORD_RECOVERY.RECOVERY_lINK, {email: email})
         .then(res => {
+            localStorage.setItem('token',res.data.token)
+            
             toast({
                 title: res.statusText,
                 description: "Email is valid",

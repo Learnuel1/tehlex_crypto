@@ -2,22 +2,24 @@ import { Box, Button, Grid, GridItem, Heading, HStack,  PinInput, PinInputField,
 import React, { useEffect, useState } from 'react';
 import { IoIosArrowRoundBack } from "react-icons/io";
 import { useLocation, useNavigate } from 'react-router-dom';
+import { LOCALSTORAGE } from '../endpoint/localstorage';
 import { PASSWORD_RECOVERY } from '../endpoint/route';
 import { thelex } from '../endpoint/thelex';
 
 
 const ResetEmailPin = () => {
     const [otp, setOtp] = useState()
-    console.log(otp)
     const navigate = useNavigate();
     const location = useLocation();
     const toast = useToast();
 
     // const handle verify otp
+    const token = LOCALSTORAGE.token()
     const handleVerifyOtp = (e:React.FormEvent) => {
         e.preventDefault();
-         thelex.get(PASSWORD_RECOVERY.VERIFY_PASSWORD_RESET,{params:{otp}} )
+         thelex.get(PASSWORD_RECOVERY.VERIFY_PASSWORD_RESET,{params:{token, otp}} )
         .then(res => {
+            localStorage.clear()
             toast({
                 title: res.statusText,
                 description: "Otp verification successfull",

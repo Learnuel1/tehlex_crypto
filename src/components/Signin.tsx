@@ -16,7 +16,7 @@ const Signin = () => {
 
     // handle show password 
     const handleClick = () => setShow(!show)
-
+   
 
     // handle submit
     const handleSubmit =async (e:React.FormEvent) => {
@@ -44,7 +44,7 @@ const Signin = () => {
                 isClosable: true,
               })
           });
-          navigate('/dashboard')
+        //   navigate('/dashboard')
     }
       
 
