@@ -23,7 +23,6 @@ const Signin = () => {
         e.preventDefault();
       await  thelex.post(LOGIN_ENDPOINT.LOGIN, {
             username: userName,
-            email: userName,
             password: password,
         } )
         .then(res => {  
@@ -38,7 +37,7 @@ const Signin = () => {
         })
         .catch(function (error) {
             toast({
-                title:`${error.response.statusText} Error`,
+                title:error.response.statusText,
                 description: "Check username and password",
                 status: 'error',
                 duration: 4000,
@@ -75,10 +74,9 @@ const Signin = () => {
 
                     <form onSubmit={handleSubmit}>
                             <Stack mt='2rem' spacing={'1rem'}>
-                                
                                 <FormControl w={['90%','90%','60%','60%']} isRequired>
-                                    <FormLabel>Email/username</FormLabel>
-                                    <Input type={'email'||'text' } placeholder='Email/username'
+                                    <FormLabel>Username</FormLabel>
+                                    <Input type={'text'} placeholder='username'
                                     name='username'                                                                         value={userName}
                                     onChange={(e) => (setuserName(e.target.value)) }
                                     />

@@ -19,7 +19,6 @@ const NewPassword = () => {
      // handle confirm password
     const handleConfrim = (e:React.FormEvent) => {
         e.preventDefault();
-        
          thelex.patch(PASSWORD_RECOVERY.RESET_PASSWORD, 
             {
                 currentPassword: newPassword,
@@ -36,12 +35,9 @@ const NewPassword = () => {
               navigate("/login")
         })
         .catch(function (error) {
-            if(newPassword !== confirmPassword)(
-                alert('password does not match. check password!!')
-            )
             toast({
-                title: error.response.statusText,
-                description: "password reset not successful try again!!",
+                title: 'Error',
+                description: "password reset not successful",
                 status: 'error',
                 duration: 4000,
                 isClosable: true,
@@ -88,7 +84,7 @@ const NewPassword = () => {
                                 </FormControl>                                
 
                                 <FormControl  isRequired>
-                                    <FormLabel>Confirm Password</FormLabel>
+                                    <FormLabel>password</FormLabel>
                                     <InputGroup size='md' >
                                     <Input
                                         pr='4.5rem'
