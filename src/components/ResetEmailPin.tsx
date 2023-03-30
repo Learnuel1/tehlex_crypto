@@ -20,6 +20,7 @@ const ResetEmailPin = () => {
          thelex.get(PASSWORD_RECOVERY.VERIFY_PASSWORD_RESET,{params:{token, otp}} )
         .then(res => {
             localStorage.clear()
+            localStorage.setItem('id', res.data.id)
             toast({
                 title: res.statusText,
                 description: "Otp verification successfull",

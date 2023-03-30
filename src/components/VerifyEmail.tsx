@@ -1,8 +1,7 @@
 import { Box, Button, color, Grid, GridItem, Heading, HStack, Link, PinInput, PinInputField, Stack, Text, textDecoration, useToast } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { LOCALSTORAGE } from '../endpoint/localstorage';
-import { PASSWORD_RECOVERY, USER_REGISTRATION_ENDPOINT } from '../endpoint/route';
+import { USER_REGISTRATION_ENDPOINT } from '../endpoint/route';
 import { thelex } from '../endpoint/thelex';
 
 
@@ -13,12 +12,11 @@ const VerifyEmail = () => {
     const toast = useToast();
     const navigate = useNavigate();
 
-    const token = LOCALSTORAGE.token()
     // handle confirm otp
     const handleConfirm = async (e:React.FormEvent) => {
         e.preventDefault();
        await thelex
-        .get( PASSWORD_RECOVERY.VERIFY_PASSWORD_RESET ,{params:{token, otp} }) // USER_REGISTRATION_ENDPOINT.VERIFY_OTP
+        .post( USER_REGISTRATION_ENDPOINT.VERIFY_OTP , {'otp': otp})
         .then((res) => {
             toast({
                 title: res.statusText,

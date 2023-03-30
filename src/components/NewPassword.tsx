@@ -5,10 +5,12 @@ import { useNavigate } from 'react-router-dom';
 import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai";
 import { thelex } from '../endpoint/thelex';
 import { PASSWORD_RECOVERY } from '../endpoint/route';
+import { LOCALSTORAGE } from '../endpoint/localstorage';
 
 const NewPassword = () => {
     const [newPassword, setNewPassword] = useState<string>('');
     const [confirmPassword, setConfirmPassword] = useState<string>('');
+    
     const navigate = useNavigate();
     const [show, setShow] = useState(false)
     const handleClick = () => setShow(!show);
@@ -17,15 +19,18 @@ const NewPassword = () => {
 
    
      // handle confirm password
-    const handleConfrim = (e:React.FormEvent) => {
+     const id = LOCALSTORAGE.id()?.toString();
+     console.log(id)
+    const handleConfrim = async (e:React.FormEvent) => {
         e.preventDefault();
-        
-         thelex.patch(PASSWORD_RECOVERY.RESET_PASSWORD, 
+         await thelex.patch(PASSWORD_RECOVERY.RESET_PASSWORD(), 
             {
-                currentPassword: newPassword,
+                id,
                 newPassword: confirmPassword,
             } )
         .then(res => {
+           
+            localStorage.clear();
             toast({
                 title: 'Password Reset Successful',
                 description: "Login with your new password",

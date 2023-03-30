@@ -1,7 +1,7 @@
 import { Box, Button, Grid, GridItem, Heading,  Stack, Text, useToast, } from '@chakra-ui/react';
 import { useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { PASSWORD_RECOVERY, USER_REGISTRATION_ENDPOINT } from '../endpoint/route';
+import { USER_REGISTRATION_ENDPOINT } from '../endpoint/route';
 import { thelex } from '../endpoint/thelex';
 
 
@@ -10,17 +10,15 @@ import { thelex } from '../endpoint/thelex';
     const navigate = useNavigate();
     const toast = useToast();
 
-    const mail = location.state.email;
-    console.log(mail)
+    const email = location.state.email.toLowerCase();    
     const phone = location.state.phone;
 
     //handle verify
     const handleVerify =async () => {
-        if(mail){           
+        if(email){           
            await thelex
-            .post(PASSWORD_RECOVERY.RECOVERY_lINK,{email: mail}) //USER_REGISTRATION_ENDPOINT.SENT_OTP 
+            .post(USER_REGISTRATION_ENDPOINT.SENT_OTP ,{email})
             .then(res => {
-                localStorage.setItem('token',res.data.token)
                 toast({
                     title: res.statusText,
                     description: "OTP Sent Successfully",
