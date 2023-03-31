@@ -10,14 +10,14 @@ import { thelex } from '../endpoint/thelex';
     const navigate = useNavigate();
     const toast = useToast();
 
-    const mail = location.state.email.toLowerCase();    
+    const email = location.state.email.toLowerCase();    
     const phone = location.state.phone;
 
     //handle verify
     const handleVerify =async () => {
-        if(mail){           
+        if(email){           
            await thelex
-            .post(USER_REGISTRATION_ENDPOINT.SENT_OTP ,{email: mail})
+            .post(USER_REGISTRATION_ENDPOINT.SENT_OTP ,{email})
             .then(res => {
                 toast({
                     title: res.statusText,
