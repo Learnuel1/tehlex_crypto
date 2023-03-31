@@ -20,7 +20,6 @@ const NewPassword = () => {
    
      // handle confirm password
      const id = LOCALSTORAGE.id()?.toString();
-     console.log(id)
     const handleConfrim = async (e:React.FormEvent) => {
         e.preventDefault();
          await thelex.patch(PASSWORD_RECOVERY.RESET_PASSWORD(), 
