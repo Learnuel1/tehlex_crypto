@@ -10,7 +10,8 @@ import { thelex } from '../endpoint/thelex';
     const navigate = useNavigate();
     const toast = useToast();
 
-    const mail = location.state.email.toLowerCase();    
+    const mail = location.state.email;
+    console.log(mail)
     const phone = location.state.phone;
 
     //handle verify
