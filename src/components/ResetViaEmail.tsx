@@ -15,7 +15,7 @@ const ResetViaEmail = () => {
     // handle continue
     const handleContinue = (e:React.FormEvent) => {
         e.preventDefault();
-         thelex.post(PASSWORD_RECOVERY.RECOVERY_lINK, {email: email})
+         thelex.post(PASSWORD_RECOVERY.RECOVERY_lINK, {email})
         .then(res => {
             localStorage.setItem('token',res.data.token)
             
