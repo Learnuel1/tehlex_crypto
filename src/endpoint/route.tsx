@@ -2,7 +2,7 @@
 export const USER_REGISTRATION_ENDPOINT = {
     REGISTER: '/auth/register',
     SENT_OTP:  '/auth/verify',
-    VERIFY_OTP: '/auth/create'
+    VERIFY_OTP: '/auth/create',
 }
 
 export const LOGIN_ENDPOINT = {
@@ -13,7 +13,5 @@ export const LOGIN_ENDPOINT = {
 export const PASSWORD_RECOVERY = {
     RECOVERY_lINK: '/user/recovery-mail',
     VERIFY_PASSWORD_RESET: '/user/verify-reset',
-    RESET_PASSWORD: '/user/reset-password',
-}
 
 
