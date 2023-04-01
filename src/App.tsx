@@ -10,7 +10,7 @@ import Notification from "./components/dashboard/Notification"
 import TradePoint from "./components/dashboard/TradePoint"
 import TransactionPin from "./components/dashboard/TransactionPin"
 import Feedback from "./components/Feedback"
-import NewPassword from "./components/NewPassword"
+
 import NotFound from "./components/NotFound"
 import Register from "./components/Register"
 import ResetEmailPin from "./components/ResetEmailPin"
@@ -45,6 +45,7 @@ import ProfileFaqs from "./components/profile/ProfileFaqs"
 import ProfileSupport from "./components/profile/Support"
 import ProfileAbout from "./components/profile/ProfileAbout"
 import ProfileTerms from "./components/profile/ProfileTerms"
+import NewPassword from "./components/NewPassword"
 
 
 

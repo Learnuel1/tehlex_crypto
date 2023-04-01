@@ -13,5 +13,6 @@ export const LOGIN_ENDPOINT = {
 export const PASSWORD_RECOVERY = {
     RECOVERY_lINK: '/user/recovery-mail',
     VERIFY_PASSWORD_RESET: '/user/verify-reset',
-
+    RESET_PASSWORD: '/user/reset-password',
+}
 

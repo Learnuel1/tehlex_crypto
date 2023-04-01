@@ -21,7 +21,7 @@ const ResetViaEmail = () => {
             
             toast({
                 title: res.statusText,
-                description: "Email is valid",
+                description: "Mail is valid",
                 status: 'success',
                 duration: 4000,
                 isClosable: true,
