@@ -9,23 +9,27 @@ import { thelex } from '../endpoint/thelex';
 
 const ResetViaEmail = () => {
     const [email, setEmail] = useState<string>('');
+    const [submitting, setSubmitting] = useState(false);
+
     const navigate = useNavigate();
     const toast = useToast();
 
     // handle continue
     const handleContinue = (e:React.FormEvent) => {
         e.preventDefault();
+        setSubmitting(true)
          thelex.post(PASSWORD_RECOVERY.RECOVERY_lINK, {email})
         .then(res => {
             localStorage.setItem('token',res.data.token)
             
             toast({
                 title: res.statusText,
-                description: "Mail is valid",
+                description: "Email is valid",
                 status: 'success',
                 duration: 4000,
                 isClosable: true,
               })
+              setSubmitting(false)
               navigate('/resetemailpin', {state: email})
         })
         .catch(function (error) {
@@ -36,6 +40,7 @@ const ResetViaEmail = () => {
                 duration: 4000,
                 isClosable: true,
               })
+              setSubmitting(false)
             //   navigate('/resetemailpin', {state: email})
           });
     };
@@ -68,8 +73,8 @@ const ResetViaEmail = () => {
             </FormControl>
 
             <Box mt='4rem'>
-                <Button colorScheme={'blue'} type='submit' >
-                    Continue
+                <Button colorScheme={'blue'} type='submit' disabled={submitting} >
+                    {submitting? 'Verifying Email...': 'Continue'}
                 </Button>
             </Box>
         </form>

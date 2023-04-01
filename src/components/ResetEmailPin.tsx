@@ -8,15 +8,19 @@ import { thelex } from '../endpoint/thelex';
 
 
 const ResetEmailPin = () => {
-    const [otp, setOtp] = useState()
+    const [otp, setOtp] = useState();
+    const [submitting, setSubmitting] = useState(false); 
+
     const navigate = useNavigate();
     const location = useLocation();
     const toast = useToast();
 
-    // const handle verify otp
     const token = LOCALSTORAGE.token()
+
+    // const handle verify otp    
     const handleVerifyOtp = (e:React.FormEvent) => {
         e.preventDefault();
+        setSubmitting(true)
          thelex.get(PASSWORD_RECOVERY.VERIFY_PASSWORD_RESET,{params:{token, otp}} )
         .then(res => {
             localStorage.clear()
@@ -28,6 +32,7 @@ const ResetEmailPin = () => {
                 duration: 4000,
                 isClosable: true,
               })
+              setSubmitting(false)
               navigate("/newpassword")  
         })
         .catch(function (error) {
@@ -38,6 +43,7 @@ const ResetEmailPin = () => {
                 duration: 4000,
                 isClosable: true,
               })
+              setSubmitting(false)
             //   navigate("/newpassword") 
           });
     };
@@ -91,8 +97,9 @@ const ResetEmailPin = () => {
 
                     <Button w='fit-content' colorScheme={'blue'}
                         type={'submit'}
+                        isDisabled={submitting}
                     >
-                        Confirm
+                        {submitting? 'Verifying Otp...' : 'Confirm Otp'}
                     </Button>
                     </Stack>
                 </form>
