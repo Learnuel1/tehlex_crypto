@@ -30,6 +30,8 @@ const initial = {
 const Register = () => {
     const [formData, setFormData] = useState<FormProps>(initial);
     const [show, setShow] = useState(false);
+    const [submitting, setSubmitting] = useState(false);
+
     const navigate = useNavigate();
     const toast = useToast();
 
@@ -49,6 +51,7 @@ const Register = () => {
     // handle create account
     const handleCreateAcount = async (e:React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+        setSubmitting(true)
        await thelex
         .post(USER_REGISTRATION_ENDPOINT.REGISTER, formData)
         .then(res => {  
@@ -59,6 +62,7 @@ const Register = () => {
                 duration: 4000,
                 isClosable: true,
               })
+              setSubmitting(false)
             navigate('/accountverification', {state: formData})
         })
         .catch((error) => {
@@ -69,6 +73,7 @@ const Register = () => {
                 duration: 4000,
                 isClosable: true,
               })
+              setSubmitting(false)
         //   navigate('/accountverification', {state: formData})
         })           
     }
@@ -97,7 +102,7 @@ const Register = () => {
 
                 <form onSubmit={handleCreateAcount}>
                         <Stack mt='2rem' spacing={'1rem'}>
-                            <FormControl w={['90%','90%','60%','60%']} isRequired>
+                            <FormControl w={['90%','90%','60%','60%']} isRequired isDisabled={submitting}>
                                 <FormLabel>Full Name</FormLabel>
                                 <Input type={'text'} placeholder='Full Name' name='name'
                                 value={formData.name}
@@ -105,7 +110,7 @@ const Register = () => {
                                 />
                             </FormControl>
 
-                            <FormControl w={['90%','90%','60%','60%']} isRequired>
+                            <FormControl w={['90%','90%','60%','60%']} isRequired isDisabled={submitting}>
                                 <FormLabel>Username</FormLabel>
                                 <Input type={'text'} placeholder='Username' name='username'
                                 value={formData.username}
@@ -113,7 +118,7 @@ const Register = () => {
                                 />
                             </FormControl>
 
-                            <FormControl w={['90%','90%','60%','60%']} isRequired>
+                            <FormControl w={['90%','90%','60%','60%']} isRequired isDisabled={submitting}>
                                 <FormLabel>Email</FormLabel>
                                 <Input type={'email'} placeholder='Email' name='email' 
                                 value={formData.email.toLocaleLowerCase()}
@@ -121,7 +126,7 @@ const Register = () => {
                                 />
                             </FormControl>
 
-                            <FormControl w={['90%','90%','60%','60%']} isRequired>
+                            <FormControl w={['90%','90%','60%','60%']} isRequired isDisabled={submitting}>
                                 <FormLabel>Phone</FormLabel>
                                 <Input type={'tel'} placeholder='phone_number' name='phone'
                                 value={formData.phone}
@@ -129,7 +134,7 @@ const Register = () => {
                                 />
                             </FormControl>
                             
-                            <FormControl w={['90%','90%','60%','60%']} isRequired>
+                            <FormControl w={['90%','90%','60%','60%']} isRequired isDisabled={submitting}>
                                     <FormLabel>password</FormLabel>
                                     <InputGroup size='md' >
                                     <Input
@@ -148,7 +153,7 @@ const Register = () => {
                                 </InputGroup>
                             </FormControl>
                             
-                            <Checkbox type={'checkbox'} required
+                            <Checkbox type={'checkbox'} required isDisabled={submitting}
                                 name={'checked'}
                                 checked={formData.checked}
                                 onChange={handleOnchange}
@@ -156,8 +161,11 @@ const Register = () => {
                             By signing up,  you agree to Tehlex’s terms and policy terms <br /> and policy
                             </Checkbox>
 
-                            <Button w={['60%','60%','60%','60%']} colorScheme={'blue'} type='submit' >
-                                 Create account
+                            <Button w={['60%','60%','60%','60%']} colorScheme={'blue'} 
+                                type='submit'
+                                isDisabled={submitting}
+                                >
+                                 {submitting? 'Creating Account': 'Create account'}
                             </Button>
 
                             <Text color='blue'>

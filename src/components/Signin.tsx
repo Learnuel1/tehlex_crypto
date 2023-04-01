@@ -10,9 +10,12 @@ import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai";
 const Signin = () => {
     const [password, setPassword] = useState<string>('');
     const [userName, setuserName] = useState<string>('');
+    const [show, setShow] = useState(false);
+    const [submitting, setSubmitting] = useState(false);
+
     const navigate = useNavigate();
     const toast = useToast();
-    const [show, setShow] = useState(false)
+    
 
     // handle show password 
     const handleClick = () => setShow(!show)
@@ -21,6 +24,8 @@ const Signin = () => {
     // handle submit
     const handleSubmit =async (e:React.FormEvent) => {
         e.preventDefault();
+        setSubmitting(true)
+
       await  thelex.post(LOGIN_ENDPOINT.LOGIN, {
             username: userName,
             password: password,
@@ -33,6 +38,7 @@ const Signin = () => {
                 duration: 4000,
                 isClosable: true,
               })
+              setSubmitting(false)
         navigate('/dashboard')
         })
         .catch(function (error) {
@@ -43,6 +49,7 @@ const Signin = () => {
                 duration: 4000,
                 isClosable: true,
               })
+              setSubmitting(false)
           });
         //   navigate('/dashboard')
     }
@@ -72,17 +79,17 @@ const Signin = () => {
 
                     {/* form */}
 
-                    <form onSubmit={handleSubmit}>
+                    <form onSubmit={handleSubmit} >
                             <Stack mt='2rem' spacing={'1rem'}>
-                                <FormControl w={['90%','90%','60%','60%']} isRequired>
-                                    <FormLabel>Username</FormLabel>
-                                    <Input type={'text'} placeholder='username'
+                                <FormControl w={['90%','90%','60%','60%']} isRequired isDisabled={submitting}>
+                                    <FormLabel>username / password</FormLabel>
+                                    <Input type={'text'|| 'email'} placeholder='username / password'
                                     name='username'                                                                         value={userName}
                                     onChange={(e) => (setuserName(e.target.value)) }
                                     />
                                 </FormControl>
                                 
-                                <FormControl w={['90%','90%','60%','60%']} isRequired>
+                                <FormControl w={['90%','90%','60%','60%']} isRequired isDisabled={submitting}>
                                     <FormLabel>password</FormLabel>
                                     <InputGroup size='md' >
                                     <Input
@@ -104,8 +111,11 @@ const Signin = () => {
                                     <Link to={'/resetpassword'}>Forgot Password ?</Link>
                                 </Text>
 
-                                <Button w={['60%','60%','60%','60%']} colorScheme={'blue'} type='submit' >
-                                    Submit
+                                <Button w={['60%','60%','60%','60%']} 
+                                    colorScheme={'blue'} type='submit' 
+                                    isDisabled={submitting}
+                                    >
+                                        {submitting ? 'Submitting...' : 'Submit'}
                                 </Button>
 
                                 <Text color='blue'>

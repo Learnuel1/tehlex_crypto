@@ -1,11 +1,13 @@
 import { Box, Button, Grid, GridItem, Heading,  Stack, Text, useToast, } from '@chakra-ui/react';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { USER_REGISTRATION_ENDPOINT } from '../endpoint/route';
 import { thelex } from '../endpoint/thelex';
 
 
  function AccountVerification() {
+    const [submitting, setSubmitting] = useState(false);
+    
     const location = useLocation();
     const navigate = useNavigate();
     const toast = useToast();
@@ -15,7 +17,8 @@ import { thelex } from '../endpoint/thelex';
 
     //handle verify
     const handleVerify =async () => {
-        if(email){           
+        if(email){       
+            setSubmitting(true)    
            await thelex
             .post(USER_REGISTRATION_ENDPOINT.SENT_OTP ,{email})
             .then(res => {
@@ -26,6 +29,7 @@ import { thelex } from '../endpoint/thelex';
                     duration: 4000,
                     isClosable: true,
                   })
+                  setSubmitting(false)
             navigate('/verifyEmail', {state: location})
             })
             .catch( (error) => {
@@ -36,12 +40,13 @@ import { thelex } from '../endpoint/thelex';
                     duration: 4000,
                     isClosable: true,
                   })
+                  setSubmitting(false)
             });
         } else if(phone){
-
             // post to phone number
+            setSubmitting(true)
             await  thelex
-            .post(USER_REGISTRATION_ENDPOINT.SENT_OTP, {phone: phone} )
+            .post(USER_REGISTRATION_ENDPOINT.SENT_OTP, {phone} )
             .then(res => {
                 toast({
                     title: res.statusText,
@@ -50,7 +55,8 @@ import { thelex } from '../endpoint/thelex';
                     duration: 4000,
                     isClosable: true,
                   })
-            navigate('/verifyPhone', {state: phone})
+                    setSubmitting(false)
+                    navigate('/verifyPhone', {state: phone})
             })
             .catch(function (error) {
                 toast({
@@ -60,6 +66,7 @@ import { thelex } from '../endpoint/thelex';
                     duration: 4000,
                     isClosable: true,
                   })
+                  setSubmitting(false)
             });
         }  
         
@@ -97,8 +104,9 @@ import { thelex } from '../endpoint/thelex';
                     <Stack spacing={'2rem'} >
                          <Button colorScheme={'blue'}
                         onClick={ handleVerify}
+                        isDisabled={submitting}
                         >
-                            Via Email Address
+                            {submitting? 'Verifying Email...' : 'Via Email Address'}
                         </Button>
 
                         <Button isDisabled colorScheme={'green'}

@@ -10,11 +10,13 @@ import { LOCALSTORAGE } from '../endpoint/localstorage';
 
 const NewPassword = () => {
   const [newPassword, setNewPassword] = useState<string>('');
-    const [confirmPassword, setConfirmPassword] = useState<string>('');
+  const [confirmPassword, setConfirmPassword] = useState<string>('');
+  const [show, setShow] = useState(false)
+  const [submitting, setSubmitting] = useState(false);
     
     
     const navigate = useNavigate();
-    const [show, setShow] = useState(false)
+    
     const handleClick = () => setShow(!show);
     const toast = useToast();
 
@@ -22,6 +24,8 @@ const NewPassword = () => {
   
     const handlePasswordReset = (e: React.FormEvent) => {
       e.preventDefault();
+      setSubmitting(true)
+
       if(newPassword !== confirmPassword){
         toast({
           title: 'Check Password',
@@ -30,11 +34,11 @@ const NewPassword = () => {
           duration: 4000,
           isClosable: true,
         })
+        setSubmitting(false)
       }else {
         thelex.patch(PASSWORD_RECOVERY.RESET_PASSWORD, {id, newPassword: newPassword})
       
-          .then(res => {
-            console.log(newPassword)
+          .then(res => {                       
             localStorage.clear()
             toast({
                 title: res.statusText,
@@ -43,9 +47,10 @@ const NewPassword = () => {
                 duration: 4000,
                 isClosable: true,
               })
+              setSubmitting(false); 
               navigate("/login")  
         })
-        .catch(function (error) {
+        .catch(function (error) {          
             toast({
                 title:error.response.statusText,
                 description: "invalid Otp",
@@ -53,6 +58,7 @@ const NewPassword = () => {
                 duration: 4000,
                 isClosable: true,
               })
+              setSubmitting(false);
           })  
       }
       
@@ -86,9 +92,9 @@ const NewPassword = () => {
             <GridItem colSpan={[2,2,1,1]}>
                 <Stack spacing={'2rem'}>
                     
-                    <form onSubmit={handlePasswordReset}>
+                    <form onSubmit={handlePasswordReset} >
                         <Stack spacing={'1rem'}>
-                            <FormControl isRequired>
+                            <FormControl isRequired isDisabled={submitting}>
                                 <FormLabel>New Password</FormLabel>
                                 <Input type={show ? 'text' : 'password'}
                                   value={newPassword}
@@ -97,7 +103,7 @@ const NewPassword = () => {
                                   />
                             </FormControl>
 
-                            <FormControl isRequired>
+                            <FormControl isRequired isDisabled={submitting}>
                                 <FormLabel>Confirm New Password</FormLabel>
                                 <InputGroup size='md' >
                                     <Input
@@ -118,7 +124,10 @@ const NewPassword = () => {
                         </Stack>
                         
                         <Box my={'2rem'}>
-                            <Button w='fit-content' colorScheme={'blue'} type='submit'>
+                            <Button w='fit-content' 
+                              colorScheme={'blue'} type='submit'
+                              isDisabled={submitting}
+                              >
                                 Reset Password
                             </Button>
                         </Box>
