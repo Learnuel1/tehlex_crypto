@@ -1,14 +1,13 @@
 import { Box, Divider, Heading, HStack, Stack, Text, VStack } from '@chakra-ui/react'
-import React from 'react'
 
 const OurStats = () => {
   return (
     <Box p='3rem' m='1rem'  >
         <VStack spacing={'1rem'}>
-        <Text color={'blue'}>OUR STATS</Text>
-        <Heading size={['sm','sm','md','md']}>
+        <Heading color={'black'} size={'md'} style={{ fontSize: '40px' }}>OUR STATS</Heading>
+        <Text size={['sm','sm','md','md']} style={{ fontSize: '24px' }}>
              We’ve met the needs of Kings across africa. <br /> See how far we’ve come since 2017
-        </Heading>
+        </Text>
         </VStack>
 
         <VStack color={'gray'} my='2rem'>            

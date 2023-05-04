@@ -1,5 +1,4 @@
 import { Box, Heading, HStack, Stack, Text, Image } from '@chakra-ui/react'
-import React from 'react'
 import { Link } from 'react-router-dom'
 import swap from '../../assets/images/swap.png'
 import pay from '../../assets/images/pay.png'
@@ -85,11 +84,11 @@ const items = [
 
 const OurCoreServices = () => {
   return (
-    <Box p='3rem' bg='blue.100'>
-        <Text color={'blue'} my='1rem'>OUR CORE SERVICES</Text>
-        <Heading size={['md','md','md']} textAlign='center'>
+    <Box p='3rem' bg='blue.50'>
+        <Heading color={'black'} my='1rem' textAlign='center'>OUR CORE SERVICES</Heading>
+        <Text size={['md','md','md']} textAlign='center' style={{ fontSize: '24px' }}>
           We’ve made transaction of our services <br />very swift on the go
-          </Heading>
+          </Text>
 
         <AliceCarousel
            mouseTracking

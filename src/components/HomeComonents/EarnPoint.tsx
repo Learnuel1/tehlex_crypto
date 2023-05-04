@@ -3,7 +3,7 @@ import earn from '../../assets/images/earnpoint.png'
 
 const EarnPoint = () => {
   return (
-    <Box w={'75vw'} mx='auto' p='1rem' bg={'blue'} my='3rem' rounded={'2xl'}>
+    <Box p={'1.5rem'} bg='blue'>
         <Grid templateColumns='repeat(2, 1fr)' gap={'1rem'}>
             <GridItem colSpan={[2,2,1,1]} mt='2rem'>
                 <Stack color={'white'} gap='1rem'>

@@ -18,8 +18,8 @@ const Footer = () => {
 
                 <GridItem colSpan={[2, 2, 1, 1]} >
                     <VStack w='100%'>
-                        <Heading color={'gray.600'} size={'md'}>Get <br /> started</Heading>
-                        <Stack color={'white'}>
+                        <Heading color={'white'} size={'md'}>Get started</Heading>
+                        <Stack color={'white'} style={{ fontSize: '14px' }}>
                             <Link to={'/'}> Sell GiftCard </Link>
                             <Link to={'/'}> Sell Crypto </Link>
                             <Link to={'/'}> Earn Points </Link>
@@ -29,8 +29,8 @@ const Footer = () => {
 
                 <GridItem colSpan={[2, 2, 1, 1]}>
                     <VStack w='100%'>
-                            <Heading color={'gray.600'} size={'md'}> Find out <br /> More</Heading>
-                            <Stack color={'white'}>
+                            <Heading color={'white'} size={'md'}> Find out More</Heading>
+                            <Stack color={'white'} style={{ fontSize: '14px' }}>
                                 <Link to={'/'}> About Us </Link>
                                 <Link to={'/'}> Our Team </Link>
                                 <Link to={'/'}> Support </Link>
@@ -41,8 +41,8 @@ const Footer = () => {
                 
                 <GridItem colSpan={[4, 4, 1, 1]} mb='2rem'>
                     <VStack w='100%' justify={'right'}>
-                            <Heading color={'gray.600'} size={'md'}> Social <br /> Handles</Heading>
-                            <HStack  color={'white'} gap='1rem' wrap={'wrap'}>
+                            <Heading color={'white'} size={'md'}> Social Handles</Heading>
+                            <HStack  color={'white'} style={{ fontSize: '14px' }} gap='1rem' wrap={'wrap'}>
                                 <BsFacebook size={'1.3rem'} />
                                 <BsInstagram size={'1.3rem'} />
                                 <AiFillTwitterCircle size={'1.3rem'} />     
@@ -54,14 +54,15 @@ const Footer = () => {
             </Grid>
 
             <hr />
-            <HStack p='.3rem' justify={'space-between'} color='white' wrap='wrap'>
-                <Image alt='logo' src={logo} w='100px' mb={'.5rem'} />
+              <HStack p='.3rem' justify={'space-between'} color='white' wrap='wrap'>
+                  <Image alt='logo' src={logo} w='100px' mb='.5rem' style={{ filter: 'grayscale(100%) brightness(1000%)' }}/>
+                {/* <Image alt='logo' src={logo} w='100px' mb={'.5rem'}/> */}
                <HStack fontSize={['10px','14px','16px','16px']}>
                     <Text>Built with</Text>
                     <GiRoyalLove color='red' />
                     <Text>Tehlex Worldwide</Text>
                     <AiOutlineCopyrightCircle />
-                    <Text>2022-2023</Text>
+                    <Text>2023</Text>
                </HStack>
             </HStack>
         </Box>

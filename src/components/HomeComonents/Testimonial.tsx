@@ -78,8 +78,8 @@ const Testimonial = () => {
   return (
    <Box maxW='100vw' p='2rem' m='1rem' bg={'gray.50'}>
         <VStack>
-            <Text color={'blue'}>TESTIMONIALS</Text>
-            <Heading size={['sm','lg']}>
+            <Heading color={'black'}>TESTIMONIALS</Heading>
+            <Heading size={['sm','lg']} style={{ fontSize: '24px' }}>
                 Hear the awesome things people  said about Us            
             </Heading>
         </VStack>

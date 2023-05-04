@@ -10,9 +10,9 @@ const MadeEasy = () => {
     <Box p='2rem' m='1rem' w='95vw' mx={'auto'}>
         <Grid templateColumns='repeat(2, 1fr)' gap={'1rem'}>
             <GridItem colSpan={[2,2,1,1]} m='2rem'>
-                <Text color={'blue'} >MADE EASY</Text>
+                <Heading color={'black'}>MADE EASY</Heading>
                 <Heading size='md' my={'2rem'}>
-                Simple Steps to get started while <br/> trading on tehle
+                Simple Steps to get started while <br/> trading on tehlex
                 </Heading>
 
                 <Stack fontSize={['1rem', '1.2rem','1.3rem']} spacing='1rem'>
