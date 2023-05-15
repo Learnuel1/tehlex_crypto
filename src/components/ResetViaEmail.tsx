@@ -15,13 +15,12 @@ const ResetViaEmail = () => {
     const toast = useToast();
 
     // handle continue
-    const handleContinue = (e:React.FormEvent) => {
+    const handleContinue = async (e:React.FormEvent) => {
         e.preventDefault();
         setSubmitting(true)
-         thelex.post(PASSWORD_RECOVERY.RECOVERY_lINK, {email})
+        await thelex.post(PASSWORD_RECOVERY.RESET_PASSWORD_OTP, {email})
         .then(res => {
-            localStorage.setItem('token',res.data.token)
-            
+            localStorage.setItem('token',res.data.token)            
             toast({
                 title: res.statusText,
                 description: "Email is valid",

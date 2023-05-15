@@ -46,7 +46,7 @@ const responsive = {
 const AboutUs = () => {
   return (
     <section>
-        <Image alt='about_us' src={about} loading='lazy' w='fit-content' h={['200px','210px','fit-content']} p='1rem' mt={'1rem'} />
+        <Image alt='about_us' src={about} loading='lazy' w='full' h={['200px','200px','500px']} p='1rem' mt={'1rem'} />
         <Box  maxW='100vw' >
             <Stack ml={['1rem','1rem','2rem','2rem']} color='blue' fontSize={'.8rem'}>            
                 <Text ml='2rem' fontSize={'1rem'}>

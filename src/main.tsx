@@ -4,7 +4,7 @@ import App from './App'
 import './index.css'
 import { ChakraProvider } from '@chakra-ui/react'
 import { BrowserRouter } from 'react-router-dom'
-import ScrollToTop from './components/ScrollToTop'
+import ScrollToTop from './components/navigation/ScrollToTop'
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>

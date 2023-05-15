@@ -1,5 +1,4 @@
 import { IconButton, Menu, MenuButton, MenuItem, MenuList } from '@chakra-ui/react'
-import React from 'react'
 import { AiOutlineMenu } from "react-icons/ai";
 import { NavLink } from 'react-router-dom';
 
@@ -13,7 +12,7 @@ const MobileNav = () => {
                 icon={<AiOutlineMenu />}
                 variant='outline'
             />
-            <MenuList w={'50vw'} h='50vh' gap={'2rem'}>
+            <MenuList w={'50vw'} h='30vh' gap={'2rem'}>
                 <MenuItem >
                     <NavLink to={'/about'} style={({isActive}) => isActive? {color:'blue'}: {color:'black'}} >
                         About Us

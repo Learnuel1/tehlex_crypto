@@ -1,21 +1,21 @@
 import { Button, Flex, HStack, Image } from '@chakra-ui/react'
 import { NavLink, useNavigate } from 'react-router-dom';
-import logo from '../assets/images/logo.png'
+import logo from '../../assets/images/logo.png'
 import MobileNav from './MobileNav';
 
 const Navigation = () => {
     const navigate = useNavigate()
   return (
-        <HStack justify={'space-between'} maxW='100vw' p='1rem' position='sticky' bg='white' top={0}   zIndex={1}
-             px='1rem' boxShadow={'dark-lg'} >
+        <HStack justify={'space-between'} maxW='100vw'  position='sticky' p='1rem' bg='white' top={0}   zIndex={1}
+             px='1rem' boxShadow={'base'} >
             <Flex w='100%' alignItems={'center'} justify='left' >                
                 <NavLink to={'/'} style={({isActive}) => isActive? {color:'blue'}: {color:'black'}} >
-                     <Image alt='logo' src={logo} w={'150px'}   />
+                     <Image alt='logo' src={logo}  w={'150px'}   />
                 </NavLink>
             </Flex>
 
             <Flex w={'100%'} gap='2rem' alignItems={'center'} justify='center'
-                display={['none','none','flex', 'flex']}
+                display={['none','none','flex', 'flex']} 
             >
                 <NavLink to={'/about'} style={({isActive}) => isActive? {color:'blue'}: {color:'black'}} >
                     About Us

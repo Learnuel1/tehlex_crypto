@@ -1,4 +1,4 @@
-import { Box, Flex, Heading, HStack, Image, Stack, Text, VStack } from '@chakra-ui/react'
+import { Box, Heading, HStack, Image, Stack, Text, VStack } from '@chakra-ui/react'
 import testimonial from '../../assets/images/testimonial.png';
 import AliceCarousel from 'react-alice-carousel';
 import 'react-alice-carousel/lib/alice-carousel.css';
@@ -77,14 +77,12 @@ const responsive = {
 const Testimonial = () => {
   return (
    <Box maxW='100vw' p='2rem' m='1rem' bg={'gray.50'}>
-        <VStack>
+        <VStack my={'1.5rem'}>
             <Text color={'blue'}>TESTIMONIALS</Text>
             <Heading size={['sm','lg']}>
                 Hear the awesome things people  said about Us            
             </Heading>
         </VStack>
-        <Flex w='80vw' mt={'3rem'} p='1rem' justify={'space-evenly'} wrap='wrap' gap={'1rem'}>
-        </Flex>
         
         <AliceCarousel
           mouseTracking

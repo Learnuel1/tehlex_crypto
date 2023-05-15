@@ -17,7 +17,7 @@ import ResetEmailPin from "./components/ResetEmailPin"
 import ResetPassword from "./components/ResetPassword"
 import ResetViaEmail from "./components/ResetViaEmail"
 import ResetViaPhone from "./components/ResetViaPhone"
-import SharedComponent from "./components/SharedComponent"
+import SharedComponent from './components/navigation/SharedComponent'
 import Signin from "./components/Signin"
 import VerifyEmail from "./components/VerifyEmail"
 import VerifyPhone from "./components/VerifyPhone"
@@ -46,6 +46,7 @@ import ProfileSupport from "./components/profile/Support"
 import ProfileAbout from "./components/profile/ProfileAbout"
 import ProfileTerms from "./components/profile/ProfileTerms"
 import NewPassword from "./components/NewPassword"
+import VerifyLogin from "./components/VerifyLogin"
 
 
 
@@ -62,6 +63,7 @@ function App() {
               <Route path="/faqs" element={<Faqs />} /> 
               <Route path="/waitlist" element={<Waitlist />} />
               <Route path="login" element={<Signin />} />
+              <Route path="verifylogin" element={<VerifyLogin />} />
               <Route path="register" element={<Register />} />
               <Route path="accountverification" element={<AccountVerification />} />
               <Route path="verifyEmail" element={<VerifyEmail />} />

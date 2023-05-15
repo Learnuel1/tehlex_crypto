@@ -9,7 +9,7 @@ import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai";
 
 const Signin = () => {
     const [password, setPassword] = useState<string>('');
-    const [userName, setuserName] = useState<string>('');
+    const [userEmail, setuserEmail] = useState<string>('');
     const [show, setShow] = useState(false);
     const [submitting, setSubmitting] = useState(false);
 
@@ -27,7 +27,7 @@ const Signin = () => {
         setSubmitting(true)
 
       await  thelex.post(LOGIN_ENDPOINT.LOGIN, {
-            username: userName,
+            username: userEmail,
             password: password,
         } )
         .then(res => {  
@@ -39,19 +39,19 @@ const Signin = () => {
                 isClosable: true,
               })
               setSubmitting(false)
-        navigate('/dashboard')
+            navigate('/verifylogin', {state: userEmail})
         })
         .catch(function (error) {
             toast({
                 title:error.response.statusText,
-                description: "Check username and password",
+                description: "Check email and password",
                 status: 'error',
                 duration: 4000,
                 isClosable: true,
               })
               setSubmitting(false)
           });
-        //   navigate('/dashboard')
+          navigate('/verifylogin', {state: userEmail})
     }
       
 
@@ -82,10 +82,10 @@ const Signin = () => {
                     <form onSubmit={handleSubmit} >
                             <Stack mt='2rem' spacing={'1rem'}>
                                 <FormControl w={['90%','90%','60%','60%']} isRequired isDisabled={submitting}>
-                                    <FormLabel>username / password</FormLabel>
-                                    <Input type={'text'|| 'email'} placeholder='username / password'
-                                    name='username'                                                                         value={userName}
-                                    onChange={(e) => (setuserName(e.target.value)) }
+                                    <FormLabel>Email</FormLabel>
+                                    <Input type='email' placeholder='email'
+                                    name='userEmail'                                          value={userEmail}
+                                    onChange={(e) => (setuserEmail(e.target.value)) }
                                     />
                                 </FormControl>
                                 
@@ -95,7 +95,7 @@ const Signin = () => {
                                     <Input
                                         pr='4.5rem'
                                         type={show ? 'text' : 'password'}
-                                        placeholder='Enter password'
+                                        placeholder='password'
                                         name='password'
                                         value={password}
                                         onChange={(e) => setPassword(e.target.value)}

@@ -1,5 +1,4 @@
 import { Box, Grid, GridItem, VStack, Image,  Text, Heading, HStack, Button } from '@chakra-ui/react'
-import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import brand_img from '../assets/images/home_img.png'
 import CardCarousel from '../components/HomeComonents/CardCarousel';
@@ -9,21 +8,30 @@ import MadeEasy from '../components/HomeComonents/MadeEasy';
 import OurCoreServices from '../components/HomeComonents/OurCoreServices';
 import OurStats from '../components/HomeComonents/OurStats';
 import Testimonial from '../components/HomeComonents/Testimonial';
+import line from "../assets/images/line.png"
 
 const Home = () => {
   const navigate = useNavigate();
   return (
-    <section>
+    <main>
         <Box maxW='100vw' minH={'fit-content'} bg='blue' p='2rem'>
           <Grid templateColumns='repeat(2, 1fr)' gap={'1rem'}>
             <GridItem colSpan={[2,2,1,1]}>
               <VStack color={'white'} spacing='2.5rem' mt={'2rem'}>
 
 
-                <Text bg={'blue'} boxShadow='base' w='fit-content' 
-                  p={'.5rem'} rounded='2xl' >
+                <Text bg={'blue'} boxShadow='base' w='fit-content'
+                  p={'.5rem'} rounded='2xl'>
                   THE FUTURE OF EXCHANGE
                 </Text>
+               
+                <Box position="absolute" top={['13.7rem','14rem','14.6rem','15.2rem']} left={'2rem'}>
+                  <Image alt='line' src={line} w={[210,220,340,420]} />
+                </Box>
+
+                <Box position="absolute" top={['13.9rem','14.2rem','14.8rem','15.4rem']} left={'2rem'} transform="-rotate-x-90">
+                  <Image alt='line' src={line} w={[210,220,340,420]} />
+                </Box>
 
                 <Heading size={['xl','2xl','2xl','3xl']}  >
                 Trade Giftcards <br/> and  crypto assets  stress  free                  
@@ -35,14 +43,14 @@ const Home = () => {
                 </Text>                
               </VStack>
 
-              <HStack display={['none', 'none', 'flex', 'flex']} justify={'space-around'} mt='2rem'>
+              <HStack display={['none', 'none', 'flex', 'flex']} gap={'2rem'} mt='2rem'>
+
                 {/* button for large screen */}
-              <Button size={'lg'}   colorScheme={'blue'} bg='blue.800'
-                onClick={()=> navigate('/login') }
-               >
+              <Button size={'lg'}   colorScheme={'gray'} color={'black'} rounded={'2xl'}
+                onClick={()=> navigate('/login') }>
                       Start Trading
               </Button>
-              <Button size={'lg'}  colorScheme={'whiteAlpha'} color={'black'} bg='white'
+              <Button size={'lg'} colorScheme='none' color={'white'} border="1px" rounded={'2xl'}
                 onClick={()=> navigate('/register') }  
                >
                     Join Now
@@ -59,19 +67,17 @@ const Home = () => {
 
             {/* Buttons for small screen under home page */}
 
-          <VStack mt='1rem' gap='1rem' display={['flex', 'flex','none', 'none']}>
-               <Button colorScheme={'blue'} bg='blue.800'
-                onClick={()=> navigate('/login') } size={'lg'} 
-               >
+          <HStack mt='1rem' gap='1rem' display={['flex', 'flex','none', 'none']}>
+            <Button size={'lg'}   colorScheme={'gray'} color={'black'} rounded={'2xl'}
+                onClick={()=> navigate('/login') }>
                       Start Trading
               </Button>
-
-              <Button size={'lg'}  colorScheme={'whiteAlpha'} color={'black'} bg='white'
+              <Button size={'lg'} colorScheme='none' color={'white'} border="1px" rounded={'2xl'}
                 onClick={()=> navigate('/register') }  
                >
                     Join Now
               </Button>
-          </VStack>
+          </HStack>
 
         </Box>
         <CoinCarousel />
@@ -81,7 +87,7 @@ const Home = () => {
         <MadeEasy />
         <Testimonial />
         <EarnPoint />
-    </section>
+    </main>
   )
 }
 

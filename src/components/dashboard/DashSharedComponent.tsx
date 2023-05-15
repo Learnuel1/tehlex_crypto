@@ -1,6 +1,6 @@
 import React from 'react'
 import { Outlet } from 'react-router-dom'
-import Navigation from '../Navigation'
+import Navigation from '../navigation/Navigation'
 import DashFooter from './DashFooter'
 import DashNav from './DashNav'
 

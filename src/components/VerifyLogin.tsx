@@ -2,12 +2,11 @@ import { Box, Button, Grid, GridItem, Heading, HStack,  PinInput, PinInputField,
 import React, { useEffect, useState } from 'react';
 import { IoIosArrowRoundBack } from "react-icons/io";
 import { useLocation, useNavigate } from 'react-router-dom';
-import { LOCALSTORAGE } from '../endpoint/localstorage';
-import { PASSWORD_RECOVERY } from '../endpoint/route';
 import { thelex } from '../endpoint/thelex';
+import { LOGIN_ENDPOINT } from '../endpoint/route';
 
 
-const ResetEmailPin = () => {
+const VerifyLogin = () => {
     const [otp, setOtp] = useState();
     const [submitting, setSubmitting] = useState(false); 
 
@@ -15,16 +14,12 @@ const ResetEmailPin = () => {
     const location = useLocation();
     const toast = useToast();
 
-    const token = LOCALSTORAGE.token();
- 
     // const handle verify otp    
     const handleVerifyOtp = (e:React.FormEvent) => {
         e.preventDefault();
         setSubmitting(true)
-         thelex.get(PASSWORD_RECOVERY.VERIFY_PASSWORD_RESET,{params:{token, otp}} )
+         thelex.post(LOGIN_ENDPOINT.VERIFY_LOGIN, {otp})
         .then(res => {
-            localStorage.clear()
-            localStorage.setItem('id', res.data.id)
             toast({
                 title: res.statusText,
                 description: "Otp verification successfull",
@@ -44,7 +39,7 @@ const ResetEmailPin = () => {
                 isClosable: true,
               })
               setSubmitting(false)
-            //   navigate("/newpassword") 
+            
           });
     };
 
@@ -71,11 +66,11 @@ const ResetEmailPin = () => {
             <GridItem colSpan={[2,2,1,1]}>
                 <Stack spacing={'2rem'}>
                 <Heading size={['lg']}>
-                    Reset your Password
+                    Enter otp to Login
                 </Heading>
 
                 <Text>
-                    Enter 4 digit code sent to <span style={{color:'blue'}}>{location.state}</span>
+                    Enter 4 digit otp code sent to <span style={{color:'blue'}}>{location.state}</span>
                 </Text>
                 </Stack>
             </GridItem>
@@ -111,4 +106,4 @@ const ResetEmailPin = () => {
   )
 }
 
-export default ResetEmailPin;
+export default VerifyLogin;

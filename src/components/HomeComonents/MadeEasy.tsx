@@ -10,7 +10,7 @@ const MadeEasy = () => {
     <Box p='2rem' m='1rem' w='95vw' mx={'auto'}>
         <Grid templateColumns='repeat(2, 1fr)' gap={'1rem'}>
             <GridItem colSpan={[2,2,1,1]} m='2rem'>
-                <Text color={'blue'} >MADE EASY</Text>
+                <Text color={'blue'} fontWeight={'semibold'} >MADE EASY</Text>
                 <Heading size='md' my={'2rem'}>
                 Simple Steps to get started while <br/> trading on tehle
                 </Heading>

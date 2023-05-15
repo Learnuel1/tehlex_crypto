@@ -36,7 +36,7 @@ const NewPassword = () => {
         })
         setSubmitting(false)
       }else {
-        thelex.patch(PASSWORD_RECOVERY.RESET_PASSWORD, {id, newPassword: newPassword})
+        thelex.patch(PASSWORD_RECOVERY.RESET_PASSWORD, {id, newPassword})
       
           .then(res => {                       
             localStorage.clear()

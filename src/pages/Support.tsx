@@ -8,8 +8,8 @@ const Support = () => {
   return (
     <section>
         <Box maxW={'100vw'} >
-         <Image alt='wupport' src={support} loading='lazy' w='fit-content'
-         h={['150px','200px','fit-content']} p='1rem' mt={'1rem'} />
+         <Image alt='support' src={support} loading='lazy' w='full'
+         h={['200px','200px','500px']} p='1rem' mt={'1rem'} />
 
             <Stack p={'1rem'} >                
                 <VStack>

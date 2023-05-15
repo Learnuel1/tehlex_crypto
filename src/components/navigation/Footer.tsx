@@ -1,17 +1,17 @@
 import { Box, Grid, GridItem, Heading, HStack, Stack, VStack, Text, Image } from '@chakra-ui/react'
-import React from 'react'
 import { Link } from 'react-router-dom';
 import { GiRoyalLove } from "react-icons/gi";
 import { BsFacebook, BsInstagram } from "react-icons/bs";
 import { AiFillTwitterCircle, AiFillYoutube, AiFillLinkedin, AiOutlineCopyrightCircle } from "react-icons/ai";
-import NewsLetter from './NewsLetter';
-import logo from '../assets/images/logo1.png'
+import NewsLetter from '../NewsLetter';
+import logo from '../../assets/images/logo1.png'
 
 const Footer = () => {
+    const date = new Date().getFullYear();
   return (
     <footer>
         <Box p={'1.5rem'} bg='black'>
-            <Grid templateColumns='repeat(4, 1fr)' gap={'2rem'}>
+            <Grid templateColumns='repeat(4, 1fr)' gap={'2rem'} mb={'1rem'}>
                 <GridItem colSpan={[4, 4, 1, 1]}>
                     <NewsLetter />
                 </GridItem>
@@ -31,15 +31,15 @@ const Footer = () => {
                     <VStack w='100%'>
                             <Heading color={'gray.600'} size={'md'}> Find out <br /> More</Heading>
                             <Stack color={'white'}>
-                                <Link to={'/'}> About Us </Link>
-                                <Link to={'/'}> Our Team </Link>
-                                <Link to={'/'}> Support </Link>
-                                <Link to={'/'}> FAQ </Link>
+                                <Link to={'/about'}> About Us </Link>
+                                {/* <Link to={'/'}> Our Team </Link> */}
+                                <Link to={'/support'}> Support </Link>
+                                <Link to={'/faqs'}> Faqs </Link>
                             </Stack>
                     </VStack>
                 </GridItem>
                 
-                <GridItem colSpan={[4, 4, 1, 1]} mb='2rem'>
+                <GridItem colSpan={[4, 4, 1, 1]}>
                     <VStack w='100%' justify={'right'}>
                             <Heading color={'gray.600'} size={'md'}> Social <br /> Handles</Heading>
                             <HStack  color={'white'} gap='1rem' wrap={'wrap'}>
@@ -54,14 +54,14 @@ const Footer = () => {
             </Grid>
 
             <hr />
-            <HStack p='.3rem' justify={'space-between'} color='white' wrap='wrap'>
-                <Image alt='logo' src={logo} w='100px' mb={'.5rem'} />
+            <HStack p='.3rem' justify={'space-between'} color='white' wrap='wrap' my={'.5rem'}>
+                <Image alt='logo' src={logo}  w='100px' mb={'.5rem'} />
                <HStack fontSize={['10px','14px','16px','16px']}>
                     <Text>Built with</Text>
                     <GiRoyalLove color='red' />
                     <Text>Tehlex Worldwide</Text>
                     <AiOutlineCopyrightCircle />
-                    <Text>2022-2023</Text>
+                    <Text>{date}</Text>
                </HStack>
             </HStack>
         </Box>

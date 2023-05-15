@@ -17,7 +17,7 @@ const EarnPoint = () => {
 
             <GridItem colSpan={[2,2,1,1]}>
                 <VStack>
-                    <Image alt='earn_point' src={earn} w='250px' loading='lazy' />
+                    <Image alt='earn_point' src={earn} w={['150px','150px','200px']} loading='lazy' />
                 </VStack>
             </GridItem>
         </Grid>
