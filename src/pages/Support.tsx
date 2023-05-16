@@ -8,11 +8,11 @@ const Support = () => {
   return (
     <section>
         <Box maxW={'100vw'} >
-         <Image alt='support' src={support} loading='lazy' w='full'
+         <Image alt='support' src={support} w='full'
          h={['200px','200px','500px']} p='1rem' mt={'1rem'} />
 
             <Stack p={'1rem'} >                
-                <VStack>
+                <VStack gap={'1rem'}>
                     <Heading size={['md','lg']}>
                         We would love to hear from you.
                     </Heading>
@@ -24,7 +24,7 @@ const Support = () => {
 
             {/* drop a message */}
 
-            <Grid templateColumns='repeat(4, 1fr)' my={'2rem'} p='2rem'>
+            <Grid templateColumns='repeat(4, 1fr)' mb={'2rem'} p='2rem'>
                 <GridItem colSpan={[4,4,3,3]} >
                     <Heading color={'gray'} p='1rem' size='md'>Drop a message</Heading>
 
@@ -32,12 +32,12 @@ const Support = () => {
                         <Flex w='100%' gap={'2rem'} flexWrap='wrap'>
                             <FormControl isRequired w={['95%','95%', '45%', '45%']}>
                                     <FormLabel>Your name</FormLabel>
-                                    <Input type={'text'} name='name' placeholder='your name' />
+                                    <Input type={'text'} name='name' placeholder='John Doe' />
                                 </FormControl>
 
                                 <FormControl isRequired w={['95%','95%', '45%', '45%']}>
                                     <FormLabel>Email address</FormLabel>
-                                    <Input type={'email'} name='email' placeholder='email address' />
+                                    <Input type={'email'} name='email' placeholder='john@gmail.com' />
                             </FormControl>
 
                             <FormControl isRequired w={['95%','95%', '45%', '45%']}>
@@ -52,7 +52,7 @@ const Support = () => {
 
                             <FormControl w='95%'>
                                 <FormLabel>Message</FormLabel>
-                                <Textarea rows={5} cols={5} />
+                                <Textarea rows={5} cols={5} placeholder='Type here' />
                             </FormControl>
                         </Flex>    
 

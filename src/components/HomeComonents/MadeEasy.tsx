@@ -1,5 +1,4 @@
-import { Box, Button, Grid, GridItem, Heading, HStack, Stack, Text, Image, VStack, } from '@chakra-ui/react'
-import React from 'react';
+import { Box, Grid, GridItem, Heading, HStack, Stack, Text, Image, VStack, } from '@chakra-ui/react'
 import { Link } from 'react-router-dom';
 import app_store from '../../assets/images/app_store.png'
 import google_store from '../../assets/images/googl_store.png'
@@ -12,7 +11,7 @@ const MadeEasy = () => {
             <GridItem colSpan={[2,2,1,1]} m='2rem'>
                 <Text color={'blue'} fontWeight={'semibold'} >MADE EASY</Text>
                 <Heading size='md' my={'2rem'}>
-                Simple Steps to get started while <br/> trading on tehle
+                Simple Steps to get started while <br/> trading on tehlex
                 </Heading>
 
                 <Stack fontSize={['1rem', '1.2rem','1.3rem']} spacing='1rem'>

@@ -26,7 +26,7 @@ const Home = () => {
                 </Text>
                
                 <Box position="absolute" top={['13.7rem','14rem','14.6rem','15.2rem']} left={'2rem'}>
-                  <Image alt='line' src={line} w={[210,220,340,420]} />
+                  <Image alt='line' src={line} w={[210,220,340,420]}  />
                 </Box>
 
                 <Box position="absolute" top={['13.9rem','14.2rem','14.8rem','15.4rem']} left={'2rem'} transform="-rotate-x-90">
