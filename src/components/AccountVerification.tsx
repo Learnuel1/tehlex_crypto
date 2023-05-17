@@ -12,15 +12,18 @@ import { thelex } from '../endpoint/thelex';
     const navigate = useNavigate();
     const toast = useToast();
 
-    const email = location.state.email.toLowerCase();    
-    const phone = location.state.phone;
+    const email:string = location.state.email.toLowerCase();    
+    const phoneNumber = location.state.phone;
+    console.log(`send otp here ${email}`)
+
 
     //handle verify
     const handleVerify =async () => {
+        // send otp to email
         if(email){       
             setSubmitting(true)    
            await thelex
-            .post(USER_REGISTRATION_ENDPOINT.SENT_OTP ,{email})
+            .post(USER_REGISTRATION_ENDPOINT.SENT_OTP ,email)
             .then(res => {
                 toast({
                     title: res.statusText,
@@ -30,7 +33,7 @@ import { thelex } from '../endpoint/thelex';
                     isClosable: true,
                   })
                   setSubmitting(false)
-            navigate('/verifyEmail', {state: location})
+            navigate('/verifyEmail', {state: email})
             })
             .catch( (error) => {
                 toast({
@@ -42,11 +45,11 @@ import { thelex } from '../endpoint/thelex';
                   })
                   setSubmitting(false)
             });
-        } else if(phone){
-            // post to phone number
+        } else if(phoneNumber){
+            // send otp to phone number
             setSubmitting(true)
             await  thelex
-            .post(USER_REGISTRATION_ENDPOINT.SENT_OTP, {phone} )
+            .post(USER_REGISTRATION_ENDPOINT.SENT_OTP, {phoneNumber} )
             .then(res => {
                 toast({
                     title: res.statusText,
@@ -56,7 +59,7 @@ import { thelex } from '../endpoint/thelex';
                     isClosable: true,
                   })
                     setSubmitting(false)
-                    navigate('/verifyPhone', {state: phone})
+                    navigate('/verifyPhone', {state: phoneNumber})
             })
             .catch(function (error) {
                 toast({
@@ -71,7 +74,7 @@ import { thelex } from '../endpoint/thelex';
         }  
         
         // testing
-        // navigate('/verifyEmail', {state: mail})
+        // navigate('/verifyEmail', {state: email})
     };
     
    // protecting route
@@ -103,7 +106,7 @@ import { thelex } from '../endpoint/thelex';
                 <GridItem colSpan={[2,2,1,1]}>
                     <Stack spacing={'2rem'} >
                          <Button colorScheme={'blue'}
-                        onClick={ handleVerify}
+                        onClick={handleVerify}
                         isDisabled={submitting}
                         >
                             {submitting? 'Verifying Email...' : 'Via Email Address'}

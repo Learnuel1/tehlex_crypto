@@ -1,10 +1,10 @@
 import { Box, Heading, Stack, VStack, Image, Text } from '@chakra-ui/react'
 import { IoIosArrowRoundBack } from 'react-icons/io'
 import { useNavigate } from 'react-router-dom'
-import emoji from '../../assets/images/emoji.png'
+import emoji from '../assets/images/emoji.png'
 
 
-const ProfileTerms = () => {
+const Terms = () => {
     const navigate = useNavigate();
     return (
       <Box maxW={'100vw'} minH='40vh' p='2rem'>
@@ -31,4 +31,4 @@ const ProfileTerms = () => {
     )
   }
 
-export default ProfileTerms
+export default Terms

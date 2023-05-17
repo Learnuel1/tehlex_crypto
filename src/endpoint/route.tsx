@@ -6,12 +6,12 @@ export const USER_REGISTRATION_ENDPOINT = {
 }
 
 export const LOGIN_ENDPOINT = {
+    LOGIN: '/auth/login-otp',
     VERIFY_LOGIN: '/auth/login',
-    LOGIN: 'auth/login-otp'
 };
 
 export const PASSWORD_RECOVERY = {
-    RESET_PASSWORD_OTP: 'user/reset-otp',
+    RESET_PASSWORD_OTP: '/user/reset-otp',
     VERIFY_PASSWORD_RESET: '/user/verify-reset',
     RESET_PASSWORD: '/user/reset-password',
 }

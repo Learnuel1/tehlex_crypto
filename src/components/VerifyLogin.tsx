@@ -9,6 +9,7 @@ import { LOGIN_ENDPOINT } from '../endpoint/route';
 const VerifyLogin = () => {
     const [otp, setOtp] = useState();
     const [submitting, setSubmitting] = useState(false); 
+    console.log(otp)
 
     const navigate = useNavigate();
     const location = useLocation();
@@ -18,7 +19,7 @@ const VerifyLogin = () => {
     const handleVerifyOtp = (e:React.FormEvent) => {
         e.preventDefault();
         setSubmitting(true)
-         thelex.post(LOGIN_ENDPOINT.VERIFY_LOGIN, {otp})
+         thelex.post(LOGIN_ENDPOINT.VERIFY_LOGIN, otp)
         .then(res => {
             toast({
                 title: res.statusText,

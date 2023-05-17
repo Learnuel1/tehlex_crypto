@@ -13,6 +13,7 @@ const Signin = () => {
     const [show, setShow] = useState(false);
     const [submitting, setSubmitting] = useState(false);
 
+
     const navigate = useNavigate();
     const toast = useToast();
     
@@ -43,7 +44,7 @@ const Signin = () => {
         })
         .catch(function (error) {
             toast({
-                title:error.response.statusText,
+                title:'Account not found',
                 description: "Check email and password",
                 status: 'error',
                 duration: 4000,
@@ -51,7 +52,7 @@ const Signin = () => {
               })
               setSubmitting(false)
           });
-          navigate('/verifylogin', {state: userEmail})
+        //   navigate('/verifylogin', {state: userEmail})
     }
       
 
@@ -84,7 +85,7 @@ const Signin = () => {
                                 <FormControl w={['90%','90%','60%','60%']} isRequired isDisabled={submitting}>
                                     <FormLabel>Email</FormLabel>
                                     <Input type='email' placeholder='email'
-                                    name='userEmail'                                          value={userEmail}
+                                    name='userEmail'     value={userEmail}
                                     onChange={(e) => (setuserEmail(e.target.value)) }
                                     />
                                 </FormControl>

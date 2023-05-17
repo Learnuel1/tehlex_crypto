@@ -9,6 +9,7 @@ import {  USER_REGISTRATION_ENDPOINT } from '../endpoint/route';
 import { thelex } from '../endpoint/thelex';
 
 
+
 interface FormProps {
     name: string;
     username: string;
@@ -160,20 +161,21 @@ const Register = () => {
                                 checked={formData.checked}
                                 onChange={handleOnchange}
                             >
-                            By signing up,  you agree to Tehlex’s terms and policy terms <br /> and policy
+                            By signing up,  you agree to Tehlex’s <Link  to='/terms'>Terms and Policy</Link>
                             </Checkbox>
 
                             <Button w={['60%','60%','60%','60%']} colorScheme={'blue'} 
                                 type='submit'
                                 isDisabled={submitting}
                                 >
-                                 {submitting? 'Creating Account': 'Create account'}
+                                 {submitting? 'Creating Account...': 'Create account'}
                             </Button>
 
                             <Text color='blue'>
                                 Already have an account? <Link to={'/login'} >Login</Link>
                             </Text>
                         </Stack>
+                    
                     </form>
              </GridItem>
         </Grid>

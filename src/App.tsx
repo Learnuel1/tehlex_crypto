@@ -47,6 +47,7 @@ import ProfileAbout from "./components/profile/ProfileAbout"
 import ProfileTerms from "./components/profile/ProfileTerms"
 import NewPassword from "./components/NewPassword"
 import VerifyLogin from "./components/VerifyLogin"
+import Terms from "./components/Terms"
 
 
 
@@ -73,7 +74,8 @@ function App() {
               <Route path="resetviaemail" element={<ResetViaEmail />} />
               <Route path="resetemailpin" element={<ResetEmailPin />} />
               <Route path="newpassword" element={<NewPassword />} />
-              <Route path="resetviaphone" element={<ResetViaPhone />} />              
+              <Route path="resetviaphone" element={<ResetViaPhone />} /> 
+              <Route path="terms" element={<Terms />} />              
           </Route>
 
               {/* shared component for dashboard */}

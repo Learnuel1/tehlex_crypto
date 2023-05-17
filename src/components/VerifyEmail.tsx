@@ -1,4 +1,4 @@
-import { Box, Button, color, Grid, GridItem, Heading, HStack, Link, PinInput, PinInputField, Stack, Text, textDecoration, useToast } from '@chakra-ui/react';
+import { Box, Button,  Grid, GridItem, Heading, HStack, Link, PinInput, PinInputField, Stack, Text,  useToast } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { USER_REGISTRATION_ENDPOINT } from '../endpoint/route';
@@ -13,7 +13,7 @@ const VerifyEmail = () => {
     const navigate = useNavigate();
 
     // handle confirm otp
-    const handleConfirm = async (e:React.FormEvent) => {
+    const handleConfirmOtp = async (e:React.FormEvent) => {
         e.preventDefault();
        await thelex
         .post( USER_REGISTRATION_ENDPOINT.VERIFY_OTP , {'otp': otp})
@@ -74,7 +74,7 @@ const VerifyEmail = () => {
             </GridItem>
             
             <GridItem colSpan={[2,2,1,1]}>
-               <form onSubmit={handleConfirm}>
+               <form onSubmit={handleConfirmOtp}>
                 <Stack gap={'2rem'}>
                         <HStack gap={'1rem'}> 
                             <PinInput  otp type='number' 
