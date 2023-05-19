@@ -3,7 +3,7 @@ import { Box, Divider, Heading, HStack, Stack, Text, VStack } from '@chakra-ui/r
 const OurStats = () => {
   return (
     <Box p='3rem' m='1rem'  >
-        <Box pos="absolute" left={['10%',0,'34%','34%']} >
+        <Box pos="absolute" left={['10%','10%','34%','34%']} >
           <Text color={'blue'} fontWeight={'semibold'} >OUR STATS</Text>
         </Box>
         <VStack spacing={'1rem'} mt={'2.5rem'}>

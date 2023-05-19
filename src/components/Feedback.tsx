@@ -1,11 +1,11 @@
-import { Box, Heading, HStack, Image, Text, VStack } from '@chakra-ui/react'
+import { Box, Button, Heading, HStack, Image, Text, VStack } from '@chakra-ui/react'
 import emoji from '../assets/images/emoji.png';
 import app_store from '../assets/images/app_store.png';
 import google_store from '../assets/images/googl_store.png'
-import { Link} from 'react-router-dom';
+import { Link, useNavigate} from 'react-router-dom';
 
 const Feedback = () => {
-  
+  const navigate = useNavigate()
 
   return (
     <section>
@@ -34,7 +34,10 @@ const Feedback = () => {
                 </HStack>
 
                 <Text color={'blue'} textDecoration='underline'>
-                    <Link to={'/login'}>Login to continue</Link>
+                    <Button size={'lg'} colorScheme='blue'
+                    onClick={() => navigate('/login')}>
+                        Login Here
+                    </Button>
                 </Text>
             </VStack>
             

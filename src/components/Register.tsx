@@ -70,14 +70,13 @@ const Register = () => {
         })
         .catch((error) => {
             toast({
-                title:error.response.statusText,
+                title:error.response.data.error,
                 description: "whopps something went wrong!!!",
                 status: 'error',
                 duration: 4000,
                 isClosable: true,
               })
               setSubmitting(false)
-        //   navigate('/accountverification', {state: formData})
         })           
     }
 

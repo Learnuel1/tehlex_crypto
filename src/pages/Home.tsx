@@ -1,4 +1,4 @@
-import { Box, Grid, GridItem, VStack, Image,  Text, Heading, HStack, Button } from '@chakra-ui/react'
+import { Box, Grid, GridItem, VStack, Image,  Text, Heading, HStack, Button, Stack } from '@chakra-ui/react'
 import { useNavigate } from 'react-router-dom';
 import brand_img from '../assets/images/home_img.png'
 import CardCarousel from '../components/HomeComonents/CardCarousel';
@@ -25,22 +25,24 @@ const Home = () => {
                   THE FUTURE OF EXCHANGE
                 </Text>
                
-                <Box position="absolute" top={['13.7rem','14rem','14.6rem','15.2rem']} left={'2rem'}>
-                  <Image alt='line' src={line} w={[210,220,340,420]}  />
+                <Box position="absolute" top={['13.7rem','14rem','14.6rem','15.2rem']} left={['2rem','8.5rem','2.5rem','2.5rem']}>
+                  <Image alt='line' src={line} w={[210,180,300,410]}  />
                 </Box>
 
-                <Box position="absolute" top={['13.9rem','14.2rem','14.8rem','15.4rem']} left={'2rem'} transform="-rotate-x-90">
-                  <Image alt='line' src={line} w={[210,220,340,420]} />
+                <Box position="absolute" top={['13.8rem','14.2rem','14.8rem','15.4rem']} left={['2rem','8.5rem','2.5rem','2.5rem']}>
+                  <Image alt='line' src={line} w={[210,180,300,410]} />
                 </Box>
 
-                <Heading size={['xl','2xl','2xl','3xl']}  >
-                Trade Giftcards <br/> and  crypto assets  stress  free                  
-                </Heading>
+                <Stack>
+                  <Heading size={['xl','2xl','2xl','3xl']}  >
+                  Trade Giftcards <br/> and  crypto assets  stress  free                  
+                  </Heading>
 
-                <Text fontSize={['1rem','1rem','1.3rem','1.3rem']}>
-                Join the league of best traders to enjoy credible transactions,
-                <br />value-added rates, and super-fast payouts.
-                </Text>                
+                  <Text fontSize={['1rem','1rem','1.3rem','1.3rem']}>
+                  Join the league of best traders to enjoy credible transactions,
+                  <br />value-added rates, and super-fast payouts.
+                  </Text>   
+                </Stack>               
               </VStack>
 
               <HStack display={['none', 'none', 'flex', 'flex']} gap={'2rem'} mt='2rem'>
@@ -67,7 +69,7 @@ const Home = () => {
 
             {/* Buttons for small screen under home page */}
 
-          <HStack mt='1rem' gap='1rem' display={['flex', 'flex','none', 'none']}>
+          <HStack mt='1rem' gap='1rem' display={['flex', 'flex','none', 'none']} justify={'center'}>
             <Button size={'lg'}   colorScheme={'gray'} color={'black'} rounded={'2xl'}
                 onClick={()=> navigate('/login') }>
                       Start Trading

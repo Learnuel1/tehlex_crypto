@@ -9,9 +9,10 @@ import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai";
 
 const Signin = () => {
     const [password, setPassword] = useState<string>('');
-    const [userEmail, setuserEmail] = useState<string>('');
-    const [show, setShow] = useState(false);
-    const [submitting, setSubmitting] = useState(false);
+    const [user, setUser] = useState<string>('');
+    const [show, setShow] = useState<boolean>(false);
+    const [submitting, setSubmitting] = useState<boolean>(false);
+    
 
 
     const navigate = useNavigate();
@@ -23,28 +24,26 @@ const Signin = () => {
    
 
     // handle submit
-    const handleSubmit =async (e:React.FormEvent) => {
+    const handleSubmit = async (e:React.FormEvent) => {
         e.preventDefault();
         setSubmitting(true)
-
-      await  thelex.post(LOGIN_ENDPOINT.LOGIN, {
-            username: userEmail,
-            password: password,
-        } )
-        .then(res => {  
+        await thelex.post(LOGIN_ENDPOINT.LOGIN, {username:user, password:password})
+            .then(res => {  
+            // console.log(res)
             toast({
                 title: res.statusText,
                 description: "Login successful",
                 status: 'success',
-                duration: 4000,
+                duration: 5000,
                 isClosable: true,
               })
               setSubmitting(false)
-            navigate('/verifylogin', {state: userEmail})
+            navigate('/verifylogin', {state: user})
         })
         .catch(function (error) {
+            // console.log(error)
             toast({
-                title:'Account not found',
+                title: error.response.data.error,
                 description: "Check email and password",
                 status: 'error',
                 duration: 4000,
@@ -52,7 +51,6 @@ const Signin = () => {
               })
               setSubmitting(false)
           });
-        //   navigate('/verifylogin', {state: userEmail})
     }
       
 
@@ -83,10 +81,10 @@ const Signin = () => {
                     <form onSubmit={handleSubmit} >
                             <Stack mt='2rem' spacing={'1rem'}>
                                 <FormControl w={['90%','90%','60%','60%']} isRequired isDisabled={submitting}>
-                                    <FormLabel>Email</FormLabel>
-                                    <Input type='email' placeholder='email'
-                                    name='userEmail'     value={userEmail}
-                                    onChange={(e) => (setuserEmail(e.target.value)) }
+                                    <FormLabel>Username:</FormLabel>
+                                    <Input type='text' placeholder='username'
+                                    name='userEmail'     value={user}
+                                    onChange={(e) => (setUser(e.target.value)) }
                                     />
                                 </FormControl>
                                 

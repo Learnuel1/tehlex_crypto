@@ -9,8 +9,7 @@ import { LOGIN_ENDPOINT } from '../endpoint/route';
 const VerifyLogin = () => {
     const [otp, setOtp] = useState();
     const [submitting, setSubmitting] = useState(false); 
-    console.log(otp)
-
+    
     const navigate = useNavigate();
     const location = useLocation();
     const toast = useToast();
@@ -19,8 +18,9 @@ const VerifyLogin = () => {
     const handleVerifyOtp = (e:React.FormEvent) => {
         e.preventDefault();
         setSubmitting(true)
-         thelex.post(LOGIN_ENDPOINT.VERIFY_LOGIN, otp)
+         thelex.post(LOGIN_ENDPOINT.VERIFY_LOGIN, {otp:otp})
         .then(res => {
+            console.log(res)
             toast({
                 title: res.statusText,
                 description: "Otp verification successfull",
@@ -29,12 +29,13 @@ const VerifyLogin = () => {
                 isClosable: true,
               })
               setSubmitting(false)
-              navigate("/newpassword")  
+              navigate("/dashboard")  
         })
         .catch(function (error) {
+            console.log(error)
             toast({
-                title:error.response.statusText,
-                description: "invalid Otp",
+                title:error.response.data.error,
+                description: "",
                 status: 'error',
                 duration: 4000,
                 isClosable: true,
@@ -71,7 +72,8 @@ const VerifyLogin = () => {
                 </Heading>
 
                 <Text>
-                    Enter 4 digit otp code sent to <span style={{color:'blue'}}>{location.state}</span>
+                    Enter 4 digit otp code sent to
+                     <span style={{color:'blue'}}> the email associated  with {location.state}</span>
                 </Text>
                 </Stack>
             </GridItem>

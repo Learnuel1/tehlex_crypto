@@ -1,4 +1,4 @@
-import { Box, Button,  Grid, GridItem, Heading, HStack, Link, PinInput, PinInputField, Stack, Text,  useToast } from '@chakra-ui/react';
+import { Box, Button,  Grid, GridItem, Heading, HStack, PinInput, PinInputField, Stack, Text,  useToast } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { USER_REGISTRATION_ENDPOINT } from '../endpoint/route';
@@ -8,6 +8,7 @@ import { thelex } from '../endpoint/thelex';
 
 const VerifyEmail = () => {
     const location = useLocation();
+   const email = location.state
     const [otp, setOtp] = useState();
     const toast = useToast();
     const navigate = useNavigate();
@@ -29,7 +30,7 @@ const VerifyEmail = () => {
           })
           .catch((error) => {
             toast({
-                title: error.response.statusText,
+                title: error.response.data.error,
                 description: "Check again",
                 status: 'error',
                 duration: 4000,
@@ -44,7 +45,7 @@ const VerifyEmail = () => {
         // resend otp
     const OtpResend = () => {
         thelex
-        .post( USER_REGISTRATION_ENDPOINT.SENT_OTP , {'otp': otp})
+        .post(USER_REGISTRATION_ENDPOINT.SENT_OTP ,{email:email})
     }
      
     // protecting route

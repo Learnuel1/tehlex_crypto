@@ -14,17 +14,19 @@ import { thelex } from '../endpoint/thelex';
 
     const email:string = location.state.email.toLowerCase();    
     const phoneNumber = location.state.phone;
-    console.log(`send otp here ${email}`)
 
 
-    //handle verify
+ 
+    //handle verification
+
     const handleVerify =async () => {
         // send otp to email
         if(email){       
             setSubmitting(true)    
            await thelex
-            .post(USER_REGISTRATION_ENDPOINT.SENT_OTP ,email)
+            .post(USER_REGISTRATION_ENDPOINT.SENT_OTP ,{email:email})
             .then(res => {
+                console.log(res)
                 toast({
                     title: res.statusText,
                     description: "OTP Sent Successfully",
@@ -36,8 +38,9 @@ import { thelex } from '../endpoint/thelex';
             navigate('/verifyEmail', {state: email})
             })
             .catch( (error) => {
+                console.log(error)
                 toast({
-                    title: error.response.statusText,
+                    title: error.response.data.error,
                     description: "verification error",
                     status: 'error',
                     duration: 4000,
@@ -45,36 +48,34 @@ import { thelex } from '../endpoint/thelex';
                   })
                   setSubmitting(false)
             });
-        } else if(phoneNumber){
-            // send otp to phone number
-            setSubmitting(true)
-            await  thelex
-            .post(USER_REGISTRATION_ENDPOINT.SENT_OTP, {phoneNumber} )
-            .then(res => {
-                toast({
-                    title: res.statusText,
-                    description: "Verification successful",
-                    status: 'success',
-                    duration: 4000,
-                    isClosable: true,
-                  })
-                    setSubmitting(false)
-                    navigate('/verifyPhone', {state: phoneNumber})
-            })
-            .catch(function (error) {
-                toast({
-                    title: error.response.statusText,
-                    description: "Verification Not Successfull",
-                    status: 'error',
-                    duration: 4000,
-                    isClosable: true,
-                  })
-                  setSubmitting(false)
-            });
+        // } else if(phoneNumber){
+        //     // send otp to phone number
+        //     setSubmitting(true)
+        //     await  thelex
+        //     .post(USER_REGISTRATION_ENDPOINT.SENT_OTP, {phoneNumber} )
+        //     .then(res => {
+        //         console.log(res)
+        //         toast({
+        //             title: res.status,
+        //             description: "Verification successful",
+        //             status: 'success',
+        //             duration: 4000,
+        //             isClosable: true,
+        //           })
+        //             setSubmitting(false)
+        //             navigate('/verifyPhone', {state: phoneNumber})
+        //     })
+        //     .catch(function (error) {
+        //         toast({
+        //             title: error.response.data.error,
+        //             description: "Verification Not Successfull",
+        //             status: 'error',
+        //             duration: 4000,
+        //             isClosable: true,
+        //           })
+        //           setSubmitting(false)
+        //     });
         }  
-        
-        // testing
-        // navigate('/verifyEmail', {state: email})
     };
     
    // protecting route
