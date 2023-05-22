@@ -13,15 +13,11 @@ const Signin = () => {
     const [show, setShow] = useState<boolean>(false);
     const [submitting, setSubmitting] = useState<boolean>(false);
     
-
-
     const navigate = useNavigate();
     const toast = useToast();
-    
 
     // handle show password 
     const handleClick = () => setShow(!show)
-   
 
     // handle submit
     const handleSubmit = async (e:React.FormEvent) => {
@@ -29,7 +25,6 @@ const Signin = () => {
         setSubmitting(true)
         await thelex.post(LOGIN_ENDPOINT.LOGIN, {username:user, password:password})
             .then(res => {  
-            // console.log(res)
             toast({
                 title: res.statusText,
                 description: "Login successful",
@@ -38,7 +33,7 @@ const Signin = () => {
                 isClosable: true,
               })
               setSubmitting(false)
-            navigate('/verifylogin', {state: user})
+              navigate('/verifylogin', { state: {...res.data, user:user} })
         })
         .catch(function (error) {
             // console.log(error)

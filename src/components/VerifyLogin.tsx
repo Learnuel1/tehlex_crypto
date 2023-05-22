@@ -9,7 +9,6 @@ import { LOGIN_ENDPOINT } from '../endpoint/route';
 const VerifyLogin = () => {
     const [otp, setOtp] = useState();
     const [submitting, setSubmitting] = useState(false); 
-    
     const navigate = useNavigate();
     const location = useLocation();
     const toast = useToast();
@@ -18,21 +17,22 @@ const VerifyLogin = () => {
     const handleVerifyOtp = (e:React.FormEvent) => {
         e.preventDefault();
         setSubmitting(true)
-         thelex.post(LOGIN_ENDPOINT.VERIFY_LOGIN, {otp:otp})
+        thelex.post(LOGIN_ENDPOINT.VERIFY_LOGIN, { otp: otp },
+            {
+            headers:{Authorization: `Bearer ${location.state?.token}`}
+        })
         .then(res => {
-            console.log(res)
             toast({
                 title: res.statusText,
-                description: "Otp verification successfull",
+                description: "Otp verification successfully",
                 status: 'success',
                 duration: 4000,
                 isClosable: true,
               })
-              setSubmitting(false)
-              navigate("/dashboard")  
+            setSubmitting(false)
+            navigate("/dashboard")  
         })
         .catch(function (error) {
-            console.log(error)
             toast({
                 title:error.response.data.error,
                 description: "",
@@ -41,16 +41,13 @@ const VerifyLogin = () => {
                 isClosable: true,
               })
               setSubmitting(false)
-            
           });
     };
-
-
 
     //protecting route
     useEffect(() => {
         if(!location.state){
-            navigate(-1)
+            navigate("/login")
         }
     },[]);
 
@@ -73,7 +70,7 @@ const VerifyLogin = () => {
 
                 <Text>
                     Enter 4 digit otp code sent to
-                     <span style={{color:'blue'}}> the email associated  with {location.state}</span>
+                     <span style={{color:'blue'}}> the email associated  with {location.state?.user}</span>
                 </Text>
                 </Stack>
             </GridItem>
