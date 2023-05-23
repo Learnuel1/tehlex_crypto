@@ -20,7 +20,7 @@ const VerifyLogin = () => {
         setSubmitting(true)
          thelex.post(LOGIN_ENDPOINT.VERIFY_LOGIN, {otp})
         .then(res => {
-            console.log(res)
+            // console.log(res)
             toast({
                 title: res.statusText,
                 description: "Otp verification successfull",
@@ -32,7 +32,7 @@ const VerifyLogin = () => {
               navigate("/dashboard")  
         })
         .catch(function (error) {
-            console.log(error)
+            // console.log(error)
             toast({
                 title:error.response.data.error,
                 description: "",
