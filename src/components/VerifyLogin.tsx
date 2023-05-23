@@ -15,10 +15,10 @@ const VerifyLogin = () => {
     const toast = useToast();
 
     // const handle verify otp    
-    const handleVerifyOtp = (e:React.FormEvent) => {
+    const handleVerifyOtp = (e:React.FormEvent) => { 
         e.preventDefault();
         setSubmitting(true)
-         thelex.post(LOGIN_ENDPOINT.VERIFY_LOGIN, {otp:otp})
+         thelex.post(LOGIN_ENDPOINT.VERIFY_LOGIN, {otp})
         .then(res => {
             console.log(res)
             toast({

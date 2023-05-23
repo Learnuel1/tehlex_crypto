@@ -2,6 +2,7 @@ import { Box, Button, Flex, Heading, HStack, VStack, Text } from '@chakra-ui/rea
 import React from 'react'
 import { Navigate, useNavigate } from 'react-router-dom'
 import CarouselDashboard from './CarouselDashboard'
+import {AiFillBell} from 'react-icons/ai'
 
 const DashNav = () => {
     const navigate = useNavigate();
@@ -13,12 +14,12 @@ const DashNav = () => {
                     </Heading>
 
                     <HStack gap={'1rem'}>
-                        <Button onClick={() => navigate('/dashboard/tradepoint')}>0 points</Button>
+                        <Button onClick={() => navigate('/dashboard/tradepoint')}>0 POINT</Button>
 
                         <Button rounded={'full'} bg='white' p='.5rem'
                          onClick={() => navigate('/dashboard/notification')}
                         > 
-                            bell
+                            <AiFillBell size={'1.3rem'} color='blue' />
                         </Button>
                     </HStack>
                 </Flex>

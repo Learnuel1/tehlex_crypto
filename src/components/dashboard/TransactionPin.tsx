@@ -32,10 +32,10 @@ const TransactionPin = () => {
                                 onChange={(e:any) => setOtp(e)} 
                                 value={otp}                      
                             >
-                                <PinInputField value={otp} required />
-                                <PinInputField value={otp} required />
-                                <PinInputField value={otp} required />
-                                <PinInputField value={otp} required />
+                                <PinInputField  required />
+                                <PinInputField  required />
+                                <PinInputField  required />
+                                <PinInputField  required />
                             </PinInput>                           
                         </HStack>
 
