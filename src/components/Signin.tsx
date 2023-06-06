@@ -37,14 +37,25 @@ const Signin = () => {
         })
         .catch(function (error) {
             // console.log(error)
-            toast({
-                title: error.response.data.error,
-                description: "Check email and password",
-                status: 'error',
-                duration: 4000,
-                isClosable: true,
-              })
-              setSubmitting(false)
+            setSubmitting(false)
+            if(error.response){
+                toast({
+                    title: error.response.data.error,
+                    description: "Check email and password",
+                    status: 'error',
+                    duration: 4000,
+                    isClosable: true,
+                  })
+            }else{
+                toast({
+                    title: error.message,
+                    description: "Check email and password",
+                    status: 'error',
+                    duration: 4000,
+                    isClosable: true,
+                  })
+            }
+             
           });
     }
       
