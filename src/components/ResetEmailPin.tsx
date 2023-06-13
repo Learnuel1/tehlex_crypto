@@ -27,7 +27,7 @@ const ResetEmailPin = () => {
             localStorage.setItem('id', res.data.id)
             toast({
                 title: res.statusText,
-                description: "Otp verification successfull",
+                description: res.data.msg,
                 status: 'success',
                 duration: 4000,
                 isClosable: true,
@@ -38,7 +38,7 @@ const ResetEmailPin = () => {
         .catch(function (error) {
             toast({
                 title:error.response.statusText,
-                description: "invalid Otp",
+                description: error.response.data.error,
                 status: 'error',
                 duration: 4000,
                 isClosable: true,

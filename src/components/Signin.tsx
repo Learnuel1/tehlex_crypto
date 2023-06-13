@@ -27,7 +27,7 @@ const Signin = () => {
             .then(res => {  
             toast({
                 title: res.statusText,
-                description: "Login successful",
+                description: res.data.msg,
                 status: 'success',
                 duration: 5000,
                 isClosable: true,

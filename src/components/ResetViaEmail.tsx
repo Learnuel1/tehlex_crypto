@@ -23,7 +23,7 @@ const ResetViaEmail = () => {
             localStorage.setItem('token',res.data.token)            
             toast({
                 title: res.statusText,
-                description: "Email is valid",
+                description:res.data.msg,
                 status: 'success',
                 duration: 4000,
                 isClosable: true,
@@ -34,7 +34,7 @@ const ResetViaEmail = () => {
         .catch(function (error) {
             toast({
                 title: error.response.statusText,
-                description: "email not found",
+                description:  error.response.data.error,
                 status: 'error',
                 duration: 4000,
                 isClosable: true,
