@@ -28,6 +28,7 @@ const Signin = () => {
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setSubmitting(true)
+
         await thelex.post(LOGIN_ENDPOINT.LOGIN, { username: user, password: password })
             .then(res => {
                 toast({
@@ -62,6 +63,7 @@ const Signin = () => {
                 }
 
             });
+
     }
 
 

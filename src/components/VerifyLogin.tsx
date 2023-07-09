@@ -24,7 +24,7 @@ const VerifyLogin = () => {
         .then(res => {
             toast({
                 title: res.statusText,
-                description: "Otp verification successfully",
+                description:res.data.msg,
                 status: 'success',
                 duration: 4000,
                 isClosable: true,
