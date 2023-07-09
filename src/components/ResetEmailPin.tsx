@@ -8,6 +8,7 @@ import { thelex } from '../endpoint/thelex';
 import left_arrow from '../assets/images/arrowleft.png'
 
 const ResetEmailPin = () => {
+
   const [otp, setOtp] = useState();
   const [submitting, setSubmitting] = useState(false);
 
@@ -56,6 +57,7 @@ const ResetEmailPin = () => {
       navigate(-1)
     }
   }, []);
+
 
   return (
     <section>

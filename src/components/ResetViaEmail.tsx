@@ -18,6 +18,7 @@ const ResetViaEmail = () => {
     const handleContinue = async (e: React.FormEvent) => {
         e.preventDefault();
         setSubmitting(true)
+
         await thelex.post(PASSWORD_RECOVERY.RESET_PASSWORD_OTP, { email })
             .then(res => {
                 localStorage.setItem('token', res.data.token)
@@ -42,6 +43,7 @@ const ResetViaEmail = () => {
                 setSubmitting(false)
                 //   navigate('/resetemailpin', {state: email})
             });
+
     };
 
     return (
