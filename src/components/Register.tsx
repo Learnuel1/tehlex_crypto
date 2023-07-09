@@ -173,7 +173,8 @@ const Register = () => {
                                 <Flex align={{ md: 'start', base: 'center' }} justify={{ md: 'start', base: 'center' }}  >
                                     <Button w={{ base: '95%', md: '60%' }} borderRadius={{ md: 'auto', base: '20px' }}
                                         colorScheme={'blue'}
-                                        backgroundColor={{ base: '#0F37F6', md: 'inherit' }} py={{ base: '24px', md: 'auto' }} type='submit'
+                                        backgroundColor={{ base: '#0F37F6', md: 'blue' }} py={{ base: '24px', md: 'auto' }} type='submit'
+
                                         isDisabled={submitting}
                                     >
                                         {submitting ? 'Creating Account...' : 'Create account'}
