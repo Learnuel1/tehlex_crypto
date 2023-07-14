@@ -6,7 +6,7 @@ import MobileNav from './MobileNav';
 const Navigation = () => {
     const navigate = useNavigate()
     return (
-        <HStack justify={'space-between'} maxW='100vw' position='sticky' p='1rem' bg='white' top={0} zIndex={1}
+        <HStack justify={'space-between'} maxW='100vw' position='sticky' p='1rem' bg='white' top={0} zIndex={9999}
             px='1rem' boxShadow={'base'} >
             <Flex w='100%' alignItems={'center'} justify='left' >
                 <NavLink to={'/'} style={({ isActive }) => isActive ? { color: 'blue' } : { color: 'black' }} >
