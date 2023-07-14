@@ -58,9 +58,9 @@ const VerifyEmail = () => {
     return (
         <section>
             <Box maxW={'100vw'} p={{ base: '2rem', md: '5rem' }}>
-                <Flex align='center' justify={{ md: 'center', base: 'start' }} gap={{ base: '100px', md: '0' }} fontFamily='Mulish'
+                <Flex align='center' justify={{ md: 'center', base: 'start' }} gap={{ base: '60px', md: '0' }} fontFamily='Mulish'
                     display={{ md: 'none', base: 'flex' }} flexDirection={{ base: 'row' }}>
-                    <Image alt='left-arrow' src={left_arrow} w='40px' display={{ md: 'none', base: 'block' }} onClick={() => navigate(-1)} />
+                    <Image alt='left-arrow' src={left_arrow} w='20px' display={{ md: 'none', base: 'block' }} onClick={() => navigate(-1)} />
                     <Text fontWeight={{ base: 'bold', md: 'medium' }} color={{ md: 'blue', base: '#303030' }}
                         fontSize={{ base: '20px', md: '15px' }} >Create account</Text>
                 </Flex>

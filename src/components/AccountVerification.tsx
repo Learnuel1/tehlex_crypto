@@ -1,4 +1,4 @@
-import { Box, Button, Grid, GridItem, Heading, Stack, Text, useToast, } from '@chakra-ui/react';
+import { Box, Button, Flex, Grid, GridItem, Heading, Stack, Text, useToast, } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { USER_REGISTRATION_ENDPOINT } from '../endpoint/route';
@@ -89,19 +89,23 @@ function AccountVerification() {
 
     return (
         <section>
-            <Box maxW={'100vw'} p='5rem' >
+            <Box maxW={'100vw'} p='5rem' fontFamily='Mulish'>
                 <Text my='1rem'>Create account</Text>
 
                 <Grid templateColumns='repeat(2, 1fr)' gap={'2rem'} >
                     <GridItem colSpan={[2, 2, 1, 1]}>
                         <Stack spacing={'2rem'}>
-                            <Heading size={['lg']}>
-                                Account Verification
-                            </Heading>
+                            <Flex display={{ base: 'flex', md: 'block' }} w={{ base: 'full' }} justify={{ base: 'start' }}>
+                                <Heading size={{ md: 'lg' }} color={{ base: '#303030', md: 'inherit' }} fontSize={{ base: '20px', md: 'auto' }} fontFamily='Mulish' fontWeight={{ base: 'bold', md: 'medium' }}>
+                                    Account Verification
+                                </Heading>
+                            </Flex>
 
-                            <Text color={'red.200'}>
-                                Choose how you would like to verify <br /> your account
-                            </Text>
+                            <Flex display={{ base: 'flex', md: 'block' }} w={{ base: 'full' }} justify={{ base: 'start' }}>
+                                <Text color={'red.200'}>
+                                    Choose how you would like to verify  your account
+                                </Text>
+                            </Flex>
                         </Stack>
                     </GridItem>
 

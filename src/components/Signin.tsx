@@ -73,7 +73,7 @@ const Signin = () => {
                 <Grid templateColumns='repeat(2, 1fr)' gap={[0, 0, '2rem']}>
                     <GridItem colSpan={[2, 2, 1, 1]} marginBottom={{ md: 'auto', base: '40px' }} >
                         <VStack w={{ md: 'auto', base: '90%' }} mx={{ base: '5%', md: 'auto' }} >
-                            <Flex align={{ md: 'center', base: 'center' }} justify={{ md: 'center', base: 'start' }} gap={{ base: '100px', md: '0' }}>
+                            <Flex align={{ md: 'center', base: 'center' }} justify={{ md: 'center', base: 'start' }} gap={{ base: '60px', md: '0' }}>
                                 <Image alt='left-arrow' src={left_arrow} w='40px' display={{ md: 'none', base: 'block' }} onClick={() => navigate(-1)} />
                                 <Text fontWeight={{ base: 'bold', md: 'medium' }} color={{ md: '#000', base: '#303030' }} fontSize={{ base: '20px', md: '15px' }} >Sign in</Text>
                             </Flex>
@@ -135,7 +135,7 @@ const Signin = () => {
                                 </Text>
                                 <Flex align={{ md: 'start', base: 'center' }} justify={{ md: 'start', base: 'center' }}  >
                                     <Button w={{ base: '85%', md: '60%' }} borderRadius={{ md: 'auto', base: '20px' }}
-                                        colorScheme={'blue'} backgroundColor={{ base: '#0F37F6', md: 'inherit' }} py={{ base: '24px', md: 'auto' }} type='submit'
+                                        colorScheme={'blue'} backgroundColor={{ base: '#0F37F6', md: 'blue.500' }} py={{ base: '24px', md: 'auto' }} type='submit'
                                         isDisabled={submitting}
                                     >
                                         {submitting ? 'Submitting...' : 'Submit'}
