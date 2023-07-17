@@ -4,7 +4,11 @@ const config = {
 }
 
 export const getConfig = () => {
+
+    return config.API();   // comment when you are working with local server
+    // return config.LOCAL_API(); // comment when you want to push your code to the repo
+
     // return config.API();   // comment when you are working with local server
-    return config.LOCAL_API(); // comment when you want to push your code to the repo
+   
 }
 
